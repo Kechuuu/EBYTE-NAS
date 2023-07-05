@@ -247,9 +247,12 @@ namespace EBYTE_NAS
                     }
                     else
                     {
-                        lb_BaudRate.Text = "Baud Rate ✔";
+                        if (CB_baudRate.Text != "")
+                        {
+                            lb_BaudRate.Text = "Baud Rate ✔";
                         lb_BaudRate.ForeColor = Color.Green;
                     }
+                }
 
 
                     //condiciones para LA PARIDAD
@@ -273,8 +276,12 @@ namespace EBYTE_NAS
                     }
                     else
                     {
-                        lb_Parity.Text = "Parity ✔";
-                        lb_Parity.ForeColor = Color.Green;
+                        if (CB_PARITY.Text != "")
+                        {
+                            lb_Parity.Text = "Parity ✔";
+                            lb_Parity.ForeColor = Color.Green;
+                        }
+                        
                     }
 
                     //condiciones para el air rate
@@ -318,8 +325,11 @@ namespace EBYTE_NAS
                     }
                     else
                     {
-                        lb_Air.Text = "Air Rate ✔";
-                        lb_Air.ForeColor = Color.Green;
+                        if (cb_air_rate.Text != "")
+                        {
+                            lb_Air.Text = "Air Rate ✔";
+                            lb_Air.ForeColor = Color.Green;
+                        }
                     }
 
 
@@ -354,8 +364,11 @@ namespace EBYTE_NAS
                     }
                     else
                     {
-                        lb_PacketSize.Text = "Packet Size ✔";
-                        lb_PacketSize.ForeColor = Color.Green;
+                        if (cb_Psize.Text != "")
+                        {
+                            lb_PacketSize.Text = "Packet Size ✔";
+                            lb_PacketSize.ForeColor = Color.Green;
+                        }
                     }
 
 
@@ -375,8 +388,11 @@ namespace EBYTE_NAS
                     }
                     else
                     {
-                        lb_rssi.Text = "Channel RSSI ✔";
-                        lb_rssi.ForeColor = Color.Green;
+                        if (cb_Crssi.Text != "")
+                        {
+                            lb_rssi.Text = "Channel RSSI ✔";
+                            lb_rssi.ForeColor = Color.Green;
+                        }
                     }
 
                     //los binarios direccion 4 3 2 reservados = 0 0 0
@@ -406,8 +422,11 @@ namespace EBYTE_NAS
                     }
                     else
                     {
-                        lb_Power.Text = "Power ✔";
-                        lb_Power.ForeColor = Color.Green;
+                        if (cb_power.Text != "")
+                        {
+                            lb_Power.Text = "Power ✔";
+                            lb_Power.ForeColor = Color.Green;
+                        }
                     }
 
                     //DIRECIION 06H
@@ -444,8 +463,11 @@ namespace EBYTE_NAS
                     }
                     else
                     {
-                        lb_TranMode.Text = "Tran Mode ✔";
-                        lb_TranMode.ForeColor = Color.Green;
+                        if (cb_tranMode.Text != "")
+                        {
+                            lb_TranMode.Text = "Tran Mode ✔";
+                            lb_TranMode.ForeColor = Color.Green;
+                        }
                     }
 
                     //relay
@@ -464,8 +486,11 @@ namespace EBYTE_NAS
                     }
                     else
                     {
-                        lb_relay.Text = "Relay ✔";
-                        lb_relay.ForeColor = Color.Green;
+                        if (cb_relay.Text != "")
+                        {
+                            lb_relay.Text = "Relay ✔";
+                            lb_relay.ForeColor = Color.Green;
+                        }
                     }
 
                     //LBT
@@ -484,8 +509,11 @@ namespace EBYTE_NAS
                     }
                     else
                     {
-                        lb_LBT.Text = "LBT ✔";
-                        lb_LBT.ForeColor = Color.Green;
+                        if (cb_lbt.Text != "")
+                        {
+                            lb_LBT.Text = "LBT ✔";
+                            lb_LBT.ForeColor = Color.Green;
+                        }
                     }
 
 
@@ -506,8 +534,11 @@ namespace EBYTE_NAS
                     }
                     else
                     {
-                        lb_WorROLE.Text = "Wor Role  ✔";
-                        lb_WorROLE.ForeColor = Color.Green;
+                        if (cb_Wrole.Text != "")
+                        {
+                            lb_WorROLE.Text = "Wor Role  ✔";
+                            lb_WorROLE.ForeColor = Color.Green;
+                        }
                     }
                     //wor cycle
 
@@ -551,8 +582,11 @@ namespace EBYTE_NAS
                     }
                     else
                     {
-                        lb_WorCycle.Text = "Wor cycle ✔";
-                        lb_WorCycle.ForeColor = Color.Green;
+                        if (cb_Wcycle.Text != "")
+                        {
+                            lb_WorCycle.Text = "Wor cycle ✔";
+                            lb_WorCycle.ForeColor = Color.Green;
+                        }
                     }
 
                     //conversion de la direccion 01H
@@ -1215,12 +1249,28 @@ namespace EBYTE_NAS
 
             if (esImpar == true || TB_MAC_ID.Text.Length != 16 && TB_MAC_ID.Text.Length != 32)
             {
-                lb_error_mac_id.Text = "caracteres incompletos";
-                lb_error_mac_id.ForeColor = Color.Red;
+                if (TB_MAC_ID.Text.Length > 16)
+                {
+                    lb_error_mac_id.Text = "Demasiados caracteres";// + Convert.ToString(TB_MAC_ID.Text.Length); ;
+                    lb_error_mac_id.ForeColor = Color.Red;
+                    lb_mac_id.Text = "MAC ID";
+                }
+                else
+                {
+
+
+                    lb_error_mac_id.Text = "caracteres incompletos";//+ Convert.ToString(TB_MAC_ID.Text.Length); ;
+                    lb_error_mac_id.ForeColor = Color.Red;
+                    lb_mac_id.Text = "MAC ID";
+                }
             }
+
             else
             {
+                lb_mac_id.Text = "MAC ID ✔";
                 lb_error_mac_id.Text = "";
+                //lb_error_mac_id.ForeColor = Color.Green;
+                //lb_error_mac_id.Text = Convert.ToString(TB_MAC_ID.Text.Length);
 
 
                 for (int i = 0; i < texto.Length; i += 2)
@@ -1413,7 +1463,7 @@ namespace EBYTE_NAS
             }
             else
             {
-                MessageBox.Show("Port closed");
+                MessageBox.Show("Port closed","Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         string checj_addres_set;

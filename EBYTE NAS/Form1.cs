@@ -45,6 +45,7 @@ namespace EBYTE_NAS
 
             // MessageBox.Show("Mensaje recibido: " + BitConverter.ToString(buffer));
             terminalLb.Text += "-" + BitConverter.ToString(buffer);
+            
         }
         int m, mx, my;
 
@@ -163,14 +164,12 @@ namespace EBYTE_NAS
             terminalLb.Text = "";
             if (puerto.IsOpen)
             {
-                byte[] hexMessage = { 0xC1, 0x00, 0x09 };
-                puerto.Write(hexMessage, 0, hexMessage.Length);
+               
+                puerto.WriteLine("AT+DEVTYPE=?");
+                timer_module.Start();
+                //get 
+               
             }
-            else
-            {
-                MessageBox.Show("Port closed", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            timer1.Start();
         }
         public static byte[] ConvertHexStringToByteArray(string hexString)
         {
@@ -182,7 +181,8 @@ namespace EBYTE_NAS
             {
                 byteArray[i / 2] = Convert.ToByte(hexString.Substring(i, 2), 16);
             }
-
+            // at+cwcode
+            // AT+DEVTYPE
             return byteArray;
 
         }
@@ -1798,6 +1798,60 @@ namespace EBYTE_NAS
         private void CB_baudRate_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox2_Click_1(object sender, EventArgs e)
+        {
+            
+           
+        }
+
+        private void bunifuLabel4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer2_get_Tick(object sender, EventArgs e)
+        {
+                terminalLb.Text = "";
+                timer2_get.Stop();
+                if (puerto.IsOpen)
+                {
+                    byte[] hexMessage = { 0xC1, 0x00, 0x09 };
+                    puerto.Write(hexMessage, 0, hexMessage.Length);
+                }
+                else
+                {
+                    MessageBox.Show("Port closed", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
+                timer1.Start();
+        }
+
+        private void timer_module_Tick(object sender, EventArgs e)
+        {
+            timer_module.Stop();
+            if (terminalLb.Text.Length >= 21)
+            {
+                string hex = terminalLb.Text;
+
+                if (terminalLb.Text.Contains("-44-45-56-54-59-50-45-"))
+                {
+                    hex = terminalLb.Text;
+                    hex = hex.Replace("-", ""); // Elimina los guiones del string hex
+
+                    byte[] bytes = new byte[hex.Length / 2];
+                    for (int i = 0; i < bytes.Length; i++)
+                    {
+                        bytes[i] = Convert.ToByte(hex.Substring(i * 2, 2), 16);
+                    }
+
+                    string result = Encoding.ASCII.GetString(bytes);
+                    lb_module_type.Text = result;
+                    terminalLb.Text = "";
+                }
+            }
+            timer2_get.Start();
         }
 
         private void cb_puertos_DropDown_1(object sender, EventArgs e)

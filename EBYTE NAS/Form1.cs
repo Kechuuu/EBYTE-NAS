@@ -44,8 +44,11 @@ namespace EBYTE_NAS
             puerto.Read(buffer, 0, bytesToRead);
 
             // MessageBox.Show("Mensaje recibido: " + BitConverter.ToString(buffer));
-            terminalLb.Text += "-" + BitConverter.ToString(buffer);
             
+            terminalLb.Text += "-" + BitConverter.ToString(buffer);
+            terminalLb.Text = terminalLb.Text.Replace("--", "-");
+
+
         }
         int m, mx, my;
 
@@ -161,16 +164,38 @@ namespace EBYTE_NAS
 
         private void btn_get_Click(object sender, EventArgs e)
         {
-            terminalLb.Text = "";
-            if (puerto.IsOpen)
+            if (cb_module.SelectedItem == "E22")
             {
-               
-                puerto.WriteLine("AT+DEVTYPE=?");
-                timer_module.Start();
-                //get 
-               
+                terminalLb.Text = "";
+                if (puerto.IsOpen)
+                {
+                    puerto.WriteLine("AT+DEVTYPE=?");
+                    timer_module.Start();
+                    //get   
+                }
+                else
+                {
+                    MessageBox.Show("Port closed", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-        }
+            if (cb_module.SelectedItem == "E32")
+            {
+                terminalLb.Text = "";
+                if (puerto.IsOpen)
+                {
+                    timer_module.Start();
+                    byte[] get = { 0x41, 0x54, 0x2B, 0x44, 0x45, 0x56, 0x54, 0x59, 0x50, 0x45, 0x3D, 0x3F };
+                    puerto.Write(get,0,get.Length);
+                    //timer_module.Start();
+                    //get   
+                }
+                else
+                {
+                    MessageBox.Show("Port closed", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
+            }
+            }
         public static byte[] ConvertHexStringToByteArray(string hexString)
         {
 
@@ -196,10 +221,6 @@ namespace EBYTE_NAS
                 //25 4E 49 3D - 43 6F 6F 72 64 69 6E 61 64 6F 72 2C - 4D 41 43 3D  - 11 24 B3 11 52 01 25 - 25
                 try
                 {
-
-
-
-
                     string Binariosbaud = "";
                     string Binarioparity = "";
                     string BinariosAIR = "";
@@ -775,330 +796,353 @@ namespace EBYTE_NAS
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
-            String mensaje = terminalLb.Text;
-            if (mensaje.Contains("C1") && mensaje.Length > 10)
+            if (cb_module.SelectedItem == "E22")
             {
-                String[] partes = mensaje.Split('-');
-                //tx_NI.Text = partes[1] + partes[2] + partes[3] + partes[4] + partes[5] + partes[6] + partes[7] + partes[8] + partes[9] + partes[10] + partes[11] + partes[12];
-                timer1.Stop();
+                String mensaje = terminalLb.Text;
+                if (mensaje.Contains("C1") && mensaje.Length > 10)
+                {
+                    String[] partes = mensaje.Split('-');
+                    //tx_NI.Text = partes[1] + partes[2] + partes[3] + partes[4] + partes[5] + partes[6] + partes[7] + partes[8] + partes[9] + partes[10] + partes[11] + partes[12];
+                    timer1.Stop();
 
-                // addres direccion del modulo 
-                string addres = partes[4] + " " + partes[5];
+                    // addres direccion del modulo 
+                    string addres = partes[4] + " " + partes[5];
 
-                // int addres_0 = Convert.ToInt32(addres, 16);
-                tx_addres.Text = Convert.ToString(addres);
-                check_addres = tx_addres.Text; // valor de cambio para visualizacion
-
-
-                // extraccion de datos de net id
-                int Net_ID = Convert.ToUInt16(partes[6], 16);
-                tx_net_id.Text = Convert.ToString(Net_ID);
-                check_net_id = tx_net_id.Text;
-
-                //comienzo de la configuracion de lectura en addres 03H
-                string binary_03H = Convert.ToString(Convert.ToInt32(partes[7], 16), 2); //03H
-                while (binary_03H.Length < 8)
-                {
-                    binary_03H = "0" + binary_03H;
-                }
-
-                binary_03H = "b" + binary_03H;
-                int delimitador;
-                string binary_03H_baudrate = "";
-                string binary_03H_parity = "";
-                string binary_03H_airRate = "";
-                //  MessageBox.Show(binary_03H);
-                try
-                {
-                    delimitador = binary_03H.IndexOf('b');
-                    binary_03H_baudrate = binary_03H.Substring(delimitador + 1, 3);
-                    binary_03H_parity = binary_03H.Substring(delimitador + 4, 2);
-                    binary_03H_airRate = binary_03H.Substring(delimitador + 6, 3);
-                }
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.Message);
-                }
-
-                // MessageBox.Show(partes[4]);   
-                //-C1-00-09-1D-4D-0A-62-00-02-03-00-00
-                //-C1-00-09-F8-0A-68-02-03-00-00-00-00
-                // 9600 8n1 2.4
-
-                //configuracion para baud rate
-                if (binary_03H_baudrate == "000")
-                {
-                    CB_baudRate.Text = "1200";
-                }
-                if (binary_03H_baudrate == "001")
-                {
-                    CB_baudRate.Text = "2400";
-                }
-                if (binary_03H_baudrate == "010")
-                {
-                    CB_baudRate.Text = "4800";
-                }
-                if (binary_03H_baudrate == "011")
-                {
-                    CB_baudRate.Text = "9600";
-                }
-                if (binary_03H_baudrate == "100")
-                {
-                    CB_baudRate.Text = "19200";
-                }
-                if (binary_03H_baudrate == "101")
-                {
-                    CB_baudRate.Text = "38400";
-                }
-                if (binary_03H_baudrate == "110")
-                {
-                    CB_baudRate.Text = "57600";
-                }
-                if (binary_03H_baudrate == "111")
-                {
-                    CB_baudRate.Text = "115200";
-                }
-                check_baud = CB_baudRate.Text;
-
-                //configuracion 04H
-                string binary_04H = Convert.ToString(Convert.ToInt32(partes[8], 16), 2); //03H
-
-                while (binary_04H.Length < 8)
-                {
-                    binary_04H = "0" + binary_04H;
-                }
-
-                int delimitador_04H = binary_04H.IndexOf('b');
-                string binary_04H_Psize = binary_04H.Substring(delimitador_04H + 1, 2);
-                string binary_04H_RSSI = binary_04H.Substring(delimitador_04H + 3, 1);
-                string binary_04H_power = binary_04H.Substring(delimitador_04H + 7, 2);
-
-                //configuracion de packet size 
-
-                if (binary_04H_Psize == "00")
-                {
-                    cb_Psize.Text = "240 bytes";
-                }
-                if (binary_04H_Psize == "01")
-                {
-                    cb_Psize.Text = "128 bytes";
-                }
-                if (binary_04H_Psize == "10")
-                {
-                    cb_Psize.Text = "64 bytes";
-                }
-                if (binary_04H_Psize == "11")
-                {
-                    cb_Psize.Text = "32 bytes";
-                }
-                check_Psize = cb_Psize.Text;
-
-                //configuracion rssi
-
-                if (binary_04H_RSSI == "0")
-                {
-                    cb_Crssi.Text = "Disable";
-                }
-                if (binary_04H_RSSI == "1")
-                {
-                    cb_Crssi.Text = "Enable";
-                }
-                check_crssi = cb_Crssi.Text;
-
-                //configuracion power
-                if (binary_04H_power == "00")
-                {
-                    cb_power.Text = "30dBm";
-                }
-                if (binary_04H_power == "01")
-                {
-                    cb_power.Text = "27dBm";
-                }
-                if (binary_04H_power == "10")
-                {
-                    cb_power.Text = "24dBm";
-                }
-                if (binary_04H_power == "11")
-                {
-                    cb_power.Text = "21dBm";
-                }
-                check_power = cb_power.Text;
-
-                //configuracion para parity
-                if (binary_03H_parity == "10")
-                {
-                    CB_PARITY.Text = "8E1";
-                }
-                if (binary_03H_parity == "01")
-                {
-                    CB_PARITY.Text = "8O1";
-                }
-                if (binary_03H_parity == "00")
-                {
-                    CB_PARITY.Text = "8N1";
-                }
-                check_parity = CB_PARITY.Text;
-
-                //configuracion para air rate
-                if (binary_03H_airRate == "000")
-                {
-                    cb_air_rate.Text = "0.3K";
-                }
-                if (binary_03H_airRate == "001")
-                {
-                    cb_air_rate.Text = "1.2K";
-                }
-                if (binary_03H_airRate == "010")
-                {
-                    cb_air_rate.Text = "2.4K";
-                }
-                if (binary_03H_airRate == "011")
-                {
-                    cb_air_rate.Text = "4.8K";
-                }
-                if (binary_03H_airRate == "100")
-                {
-                    cb_air_rate.Text = "9.6K";
-                }
-                if (binary_03H_airRate == "101")
-                {
-                    cb_air_rate.Text = "19.2K";
-                }
-                if (binary_03H_airRate == "110")
-                {
-                    cb_air_rate.Text = "38.4K";
-                }
-                if (binary_03H_airRate == "111")
-                {
-                    cb_air_rate.Text = "62.5K";
-                }
-                check_air = cb_air_rate.Text;
-
-                //channel Canal 05H
-                int channel = Convert.ToUInt16(partes[9], 16);
-                tx_channel.Text = Convert.ToString(channel);
-                check_channel = tx_channel.Text;
-
-                //CONFIG 06H
-
-                string binary_06H = Convert.ToString(Convert.ToInt32(partes[10], 16), 2); //03H
-
-                while (binary_06H.Length < 8)
-                {
-                    binary_06H = "0" + binary_06H;
-                }
-
-                int delimitador_06H = binary_06H.IndexOf('b');
-                string binary_06H_RSSI = binary_06H.Substring(delimitador_06H + 1, 1);
-                string binary_06H_FIXED = binary_06H.Substring(delimitador_06H + 2, 1);
-                string binary_06H_RElay = binary_06H.Substring(delimitador_06H + 3, 1);
-                string binary_06H_LBT = binary_06H.Substring(delimitador_06H + 4, 1);
-                string binary_06H_WORCONTROL = binary_06H.Substring(delimitador_06H + 5, 1);
-                string binary_06H_Wcycle = binary_06H.Substring(delimitador_06H + 6, 3);
-
-                //Packet rssi
-                if (binary_06H_RSSI == "0")
-                {
-                    cb_Prssi.Text = "Disable";
-                }
-                if (binary_06H_RSSI == "1")
-                {
-                    cb_Prssi.Text = "Enable";
-                }
-                check_RSSI = cb_Prssi.Text;
-
-                //tran mode
-                if (binary_06H_FIXED == "0")
-                {
-                    cb_tranMode.Text = "Normal";
-                }
-                if (binary_06H_FIXED == "1")
-                {
-                    cb_tranMode.Text = "Fixed";
-                }
-                check_fixed = cb_tranMode.Text;
-
-                //relay
-                if (binary_06H_RElay == "0")
-                {
-                    cb_relay.Text = "Disable";
-                }
-                if (binary_06H_RElay == "1")
-                {
-                    cb_relay.Text = "Enable";
-                }
-                check_relay = cb_relay.Text;
-
-                //LBT
-                if (binary_06H_LBT == "0")
-                {
-                    cb_lbt.Text = "Disable";
-                }
-                if (binary_06H_LBT == "1")
-                {
-                    cb_lbt.Text = "Enable";
-                }
-                check_LBT = cb_lbt.Text;
-
-                //wor_control
-                if (binary_06H_WORCONTROL == "0")
-                {
-                    cb_Wrole.Text = "Recieve";
-                }
-                if (binary_06H_WORCONTROL == "1")
-                {
-                    cb_Wrole.Text = "Translate";
-                }
-                check_Wrole = cb_Wrole.Text;
-
-                //wor cycle
-
-                if (binary_06H_Wcycle == "000")
-                {
-                    cb_Wcycle.Text = "500ms";
-                }
-                if (binary_06H_Wcycle == "001")
-                {
-                    cb_Wcycle.Text = "1000ms";
-                }
-                if (binary_06H_Wcycle == "010")
-                {
-                    cb_Wcycle.Text = "1500ms";
-                }
-                if (binary_06H_Wcycle == "011")
-                {
-                    cb_Wcycle.Text = "2000ms";
-                }
-                if (binary_06H_Wcycle == "100")
-                {
-                    cb_Wcycle.Text = "2500ms";
-                }
-                if (binary_06H_Wcycle == "101")
-                {
-                    cb_Wcycle.Text = "3000ms";
-                }
-                if (binary_06H_Wcycle == "110")
-                {
-                    cb_Wcycle.Text = "3500ms";
-                }
-                if (binary_06H_Wcycle == "111")
-                {
-                    cb_Wcycle.Text = "4000ms";
-                }
-                check_Wcycle = cb_Wcycle.Text;
-
-                // key 
-                string key = partes[11] + partes[12];
-
-                int key_0 = Convert.ToInt32(key, 16);
+                    // int addres_0 = Convert.ToInt32(addres, 16);
+                    tx_addres.Text = Convert.ToString(addres);
+                    check_addres = tx_addres.Text; // valor de cambio para visualizacion
 
 
-                tx_key.Text = Convert.ToString(key_0);
-                check_Key = tx_key.Text;
+                    // extraccion de datos de net id
+                    int Net_ID = Convert.ToUInt16(partes[6], 16);
+                    tx_net_id.Text = Convert.ToString(Net_ID);
+                    check_net_id = tx_net_id.Text;
+
+                    //comienzo de la configuracion de lectura en addres 03H
+                    string binary_03H = Convert.ToString(Convert.ToInt32(partes[7], 16), 2); //03H
+                    while (binary_03H.Length < 8)
+                    {
+                        binary_03H = "0" + binary_03H;
+                    }
+
+                    binary_03H = "b" + binary_03H;
+                    int delimitador;
+                    string binary_03H_baudrate = "";
+                    string binary_03H_parity = "";
+                    string binary_03H_airRate = "";
+                    //  MessageBox.Show(binary_03H);
+                    try
+                    {
+                        delimitador = binary_03H.IndexOf('b');
+                        binary_03H_baudrate = binary_03H.Substring(delimitador + 1, 3);
+                        binary_03H_parity = binary_03H.Substring(delimitador + 4, 2);
+                        binary_03H_airRate = binary_03H.Substring(delimitador + 6, 3);
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+
+                    // MessageBox.Show(partes[4]);   
+                    //-C1-00-09-1D-4D-0A-62-00-02-03-00-00
+                    //-C1-00-09-F8-0A-68-02-03-00-00-00-00
+                    // 9600 8n1 2.4
+
+                    //configuracion para baud rate
+                    if (binary_03H_baudrate == "000")
+                    {
+                        CB_baudRate.Text = "1200";
+                    }
+                    if (binary_03H_baudrate == "001")
+                    {
+                        CB_baudRate.Text = "2400";
+                    }
+                    if (binary_03H_baudrate == "010")
+                    {
+                        CB_baudRate.Text = "4800";
+                    }
+                    if (binary_03H_baudrate == "011")
+                    {
+                        CB_baudRate.Text = "9600";
+                    }
+                    if (binary_03H_baudrate == "100")
+                    {
+                        CB_baudRate.Text = "19200";
+                    }
+                    if (binary_03H_baudrate == "101")
+                    {
+                        CB_baudRate.Text = "38400";
+                    }
+                    if (binary_03H_baudrate == "110")
+                    {
+                        CB_baudRate.Text = "57600";
+                    }
+                    if (binary_03H_baudrate == "111")
+                    {
+                        CB_baudRate.Text = "115200";
+                    }
+                    check_baud = CB_baudRate.Text;
+
+                    //configuracion 04H
+                    string binary_04H = Convert.ToString(Convert.ToInt32(partes[8], 16), 2); //03H
+
+                    while (binary_04H.Length < 8)
+                    {
+                        binary_04H = "0" + binary_04H;
+                    }
+
+                    int delimitador_04H = binary_04H.IndexOf('b');
+                    string binary_04H_Psize = binary_04H.Substring(delimitador_04H + 1, 2);
+                    string binary_04H_RSSI = binary_04H.Substring(delimitador_04H + 3, 1);
+                    string binary_04H_power = binary_04H.Substring(delimitador_04H + 7, 2);
+
+                    //configuracion de packet size 
+
+                    if (binary_04H_Psize == "00")
+                    {
+                        cb_Psize.Text = "240 bytes";
+                    }
+                    if (binary_04H_Psize == "01")
+                    {
+                        cb_Psize.Text = "128 bytes";
+                    }
+                    if (binary_04H_Psize == "10")
+                    {
+                        cb_Psize.Text = "64 bytes";
+                    }
+                    if (binary_04H_Psize == "11")
+                    {
+                        cb_Psize.Text = "32 bytes";
+                    }
+                    check_Psize = cb_Psize.Text;
+
+                    //configuracion rssi
+
+                    if (binary_04H_RSSI == "0")
+                    {
+                        cb_Crssi.Text = "Disable";
+                    }
+                    if (binary_04H_RSSI == "1")
+                    {
+                        cb_Crssi.Text = "Enable";
+                    }
+                    check_crssi = cb_Crssi.Text;
+
+                    //configuracion power
+                    if (binary_04H_power == "00")
+                    {
+                        cb_power.Text = "30dBm";
+                    }
+                    if (binary_04H_power == "01")
+                    {
+                        cb_power.Text = "27dBm";
+                    }
+                    if (binary_04H_power == "10")
+                    {
+                        cb_power.Text = "24dBm";
+                    }
+                    if (binary_04H_power == "11")
+                    {
+                        cb_power.Text = "21dBm";
+                    }
+                    check_power = cb_power.Text;
+
+                    //configuracion para parity
+                    if (binary_03H_parity == "10")
+                    {
+                        CB_PARITY.Text = "8E1";
+                    }
+                    if (binary_03H_parity == "01")
+                    {
+                        CB_PARITY.Text = "8O1";
+                    }
+                    if (binary_03H_parity == "00")
+                    {
+                        CB_PARITY.Text = "8N1";
+                    }
+                    check_parity = CB_PARITY.Text;
+
+                    //configuracion para air rate
+                    if (binary_03H_airRate == "000")
+                    {
+                        cb_air_rate.Text = "0.3K";
+                    }
+                    if (binary_03H_airRate == "001")
+                    {
+                        cb_air_rate.Text = "1.2K";
+                    }
+                    if (binary_03H_airRate == "010")
+                    {
+                        cb_air_rate.Text = "2.4K";
+                    }
+                    if (binary_03H_airRate == "011")
+                    {
+                        cb_air_rate.Text = "4.8K";
+                    }
+                    if (binary_03H_airRate == "100")
+                    {
+                        cb_air_rate.Text = "9.6K";
+                    }
+                    if (binary_03H_airRate == "101")
+                    {
+                        cb_air_rate.Text = "19.2K";
+                    }
+                    if (binary_03H_airRate == "110")
+                    {
+                        cb_air_rate.Text = "38.4K";
+                    }
+                    if (binary_03H_airRate == "111")
+                    {
+                        cb_air_rate.Text = "62.5K";
+                    }
+                    check_air = cb_air_rate.Text;
+
+                    //channel Canal 05H
+                    int channel = Convert.ToUInt16(partes[9], 16);
+                    tx_channel.Text = Convert.ToString(channel);
+                    check_channel = tx_channel.Text;
+
+                    //CONFIG 06H
+
+                    string binary_06H = Convert.ToString(Convert.ToInt32(partes[10], 16), 2); //03H
+
+                    while (binary_06H.Length < 8)
+                    {
+                        binary_06H = "0" + binary_06H;
+                    }
+
+                    int delimitador_06H = binary_06H.IndexOf('b');
+                    string binary_06H_RSSI = binary_06H.Substring(delimitador_06H + 1, 1);
+                    string binary_06H_FIXED = binary_06H.Substring(delimitador_06H + 2, 1);
+                    string binary_06H_RElay = binary_06H.Substring(delimitador_06H + 3, 1);
+                    string binary_06H_LBT = binary_06H.Substring(delimitador_06H + 4, 1);
+                    string binary_06H_WORCONTROL = binary_06H.Substring(delimitador_06H + 5, 1);
+                    string binary_06H_Wcycle = binary_06H.Substring(delimitador_06H + 6, 3);
+
+                    //Packet rssi
+                    if (binary_06H_RSSI == "0")
+                    {
+                        cb_Prssi.Text = "Disable";
+                    }
+                    if (binary_06H_RSSI == "1")
+                    {
+                        cb_Prssi.Text = "Enable";
+                    }
+                    check_RSSI = cb_Prssi.Text;
+
+                    //tran mode
+                    if (binary_06H_FIXED == "0")
+                    {
+                        cb_tranMode.Text = "Normal";
+                    }
+                    if (binary_06H_FIXED == "1")
+                    {
+                        cb_tranMode.Text = "Fixed";
+                    }
+                    check_fixed = cb_tranMode.Text;
+
+                    //relay
+                    if (binary_06H_RElay == "0")
+                    {
+                        cb_relay.Text = "Disable";
+                    }
+                    if (binary_06H_RElay == "1")
+                    {
+                        cb_relay.Text = "Enable";
+                    }
+                    check_relay = cb_relay.Text;
+
+                    //LBT
+                    if (binary_06H_LBT == "0")
+                    {
+                        cb_lbt.Text = "Disable";
+                    }
+                    if (binary_06H_LBT == "1")
+                    {
+                        cb_lbt.Text = "Enable";
+                    }
+                    check_LBT = cb_lbt.Text;
+
+                    //wor_control
+                    if (binary_06H_WORCONTROL == "0")
+                    {
+                        cb_Wrole.Text = "Recieve";
+                    }
+                    if (binary_06H_WORCONTROL == "1")
+                    {
+                        cb_Wrole.Text = "Translate";
+                    }
+                    check_Wrole = cb_Wrole.Text;
+
+                    //wor cycle
+
+                    if (binary_06H_Wcycle == "000")
+                    {
+                        cb_Wcycle.Text = "500ms";
+                    }
+                    if (binary_06H_Wcycle == "001")
+                    {
+                        cb_Wcycle.Text = "1000ms";
+                    }
+                    if (binary_06H_Wcycle == "010")
+                    {
+                        cb_Wcycle.Text = "1500ms";
+                    }
+                    if (binary_06H_Wcycle == "011")
+                    {
+                        cb_Wcycle.Text = "2000ms";
+                    }
+                    if (binary_06H_Wcycle == "100")
+                    {
+                        cb_Wcycle.Text = "2500ms";
+                    }
+                    if (binary_06H_Wcycle == "101")
+                    {
+                        cb_Wcycle.Text = "3000ms";
+                    }
+                    if (binary_06H_Wcycle == "110")
+                    {
+                        cb_Wcycle.Text = "3500ms";
+                    }
+                    if (binary_06H_Wcycle == "111")
+                    {
+                        cb_Wcycle.Text = "4000ms";
+                    }
+                    check_Wcycle = cb_Wcycle.Text;
+
+                    // key 
+                    string key = partes[11] + partes[12];
+
+                    int key_0 = Convert.ToInt32(key, 16);
+
+
+                    tx_key.Text = Convert.ToString(key_0);
+                    check_Key = tx_key.Text;
+                }
 
             }
+            if (cb_module.SelectedItem == "E32")
+            {
+                terminalLb.Text = terminalLb.Text.Replace("--", "-");
+                String mensaje = terminalLb.Text;
+                //MessageBox.Show(mensaje);
+                if (mensaje.Contains("C0") && mensaje.Length > 4)
+                {
+                    String[] partes = mensaje.Split('-');//-C0-00-00-1A-06-40
+
+                    //1A -> baud 03h
+                    //06 -> channel
+                    //40 -> fixed
+                    // 00 00 -> addres
+
+                    timer1.Stop();
+
+                }
+            } 
+                    
+            
+        timer1.Stop();
         }
 
         private void tx_addres_KeyPress(object sender, KeyPressEventArgs e)
@@ -1469,330 +1513,332 @@ namespace EBYTE_NAS
         string checj_addres_set;
         private void timer_set_Tick(object sender, EventArgs e)
         {
-            String mensaje = terminalLb.Text;
-            if (mensaje.Contains("C1") && mensaje.Length > 10)
+            if (cb_module.SelectedItem == "E22")
             {
-                String[] partes = mensaje.Split('-');
-                //tx_NI.Text = partes[1] + partes[2] + partes[3] + partes[4] + partes[5] + partes[6] + partes[7] + partes[8] + partes[9] + partes[10] + partes[11] + partes[12];
-                timer1.Stop();
+                String mensaje = terminalLb.Text;
+                if (mensaje.Contains("C1") && mensaje.Length > 10)
+                {
+                    String[] partes = mensaje.Split('-');
+                    //tx_NI.Text = partes[1] + partes[2] + partes[3] + partes[4] + partes[5] + partes[6] + partes[7] + partes[8] + partes[9] + partes[10] + partes[11] + partes[12];
+                    timer1.Stop();
 
-                // addres direccion del modulo 
-                string addres = partes[4] + " " + partes[5];
+                    // addres direccion del modulo 
+                    string addres = partes[4] + " " + partes[5];
 
-                // int addres_0 = Convert.ToInt32(addres, 16);
-                tx_addres.Text = Convert.ToString(addres);
-                check_addres = tx_addres.Text; // valor de cambio para visualizacion
-
-
-                // extraccion de datos de net id
-                int Net_ID = Convert.ToUInt16(partes[6], 16);
-                tx_net_id.Text = Convert.ToString(Net_ID);
-                check_net_id = tx_net_id.Text;
-
-                //comienzo de la configuracion de lectura en addres 03H
-                string binary_03H = Convert.ToString(Convert.ToInt32(partes[7], 16), 2); //03H
-                while (binary_03H.Length < 8)
-                {
-                    binary_03H = "0" + binary_03H;
-                }
-
-                binary_03H = "b" + binary_03H;
-                int delimitador;
-                string binary_03H_baudrate = "";
-                string binary_03H_parity = "";
-                string binary_03H_airRate = "";
-                //  MessageBox.Show(binary_03H);
-                try
-                {
-                    delimitador = binary_03H.IndexOf('b');
-                    binary_03H_baudrate = binary_03H.Substring(delimitador + 1, 3);
-                    binary_03H_parity = binary_03H.Substring(delimitador + 4, 2);
-                    binary_03H_airRate = binary_03H.Substring(delimitador + 6, 3);
-                }
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.Message);
-                }
-
-                // MessageBox.Show(partes[4]);   
-                //-C1-00-09-1D-4D-0A-62-00-02-03-00-00
-                //-C1-00-09-F8-0A-68-02-03-00-00-00-00
-                // 9600 8n1 2.4
-
-                //configuracion para baud rate
-                if (binary_03H_baudrate == "000")
-                {
-                    CB_baudRate.Text = "1200";
-                }
-                if (binary_03H_baudrate == "001")
-                {
-                    CB_baudRate.Text = "2400";
-                }
-                if (binary_03H_baudrate == "010")
-                {
-                    CB_baudRate.Text = "4800";
-                }
-                if (binary_03H_baudrate == "011")
-                {
-                    CB_baudRate.Text = "9600";
-                }
-                if (binary_03H_baudrate == "100")
-                {
-                    CB_baudRate.Text = "19200";
-                }
-                if (binary_03H_baudrate == "101")
-                {
-                    CB_baudRate.Text = "38400";
-                }
-                if (binary_03H_baudrate == "110")
-                {
-                    CB_baudRate.Text = "57600";
-                }
-                if (binary_03H_baudrate == "111")
-                {
-                    CB_baudRate.Text = "115200";
-                }
-                check_baud = CB_baudRate.Text;
-
-                //configuracion 04H
-                string binary_04H = Convert.ToString(Convert.ToInt32(partes[8], 16), 2); //03H
-
-                while (binary_04H.Length < 8)
-                {
-                    binary_04H = "0" + binary_04H;
-                }
-
-                int delimitador_04H = binary_04H.IndexOf('b');
-                string binary_04H_Psize = binary_04H.Substring(delimitador_04H + 1, 2);
-                string binary_04H_RSSI = binary_04H.Substring(delimitador_04H + 3, 1);
-                string binary_04H_power = binary_04H.Substring(delimitador_04H + 7, 2);
-
-                //configuracion de packet size 
-
-                if (binary_04H_Psize == "00")
-                {
-                    cb_Psize.Text = "240 bytes";
-                }
-                if (binary_04H_Psize == "01")
-                {
-                    cb_Psize.Text = "128 bytes";
-                }
-                if (binary_04H_Psize == "10")
-                {
-                    cb_Psize.Text = "64 bytes";
-                }
-                if (binary_04H_Psize == "11")
-                {
-                    cb_Psize.Text = "32 bytes";
-                }
-                check_Psize = cb_Psize.Text;
-
-                //configuracion rssi
-
-                if (binary_04H_RSSI == "0")
-                {
-                    cb_Crssi.Text = "Disable";
-                }
-                if (binary_04H_RSSI == "1")
-                {
-                    cb_Crssi.Text = "Enable";
-                }
-                check_crssi = cb_Crssi.Text;
-
-                //configuracion power
-                if (binary_04H_power == "00")
-                {
-                    cb_power.Text = "30dBm";
-                }
-                if (binary_04H_power == "01")
-                {
-                    cb_power.Text = "27dBm";
-                }
-                if (binary_04H_power == "10")
-                {
-                    cb_power.Text = "24dBm";
-                }
-                if (binary_04H_power == "11")
-                {
-                    cb_power.Text = "21dBm";
-                }
-                check_power = cb_power.Text;
-
-                //configuracion para parity
-                if (binary_03H_parity == "10")
-                {
-                    CB_PARITY.Text = "8E1";
-                }
-                if (binary_03H_parity == "01")
-                {
-                    CB_PARITY.Text = "8O1";
-                }
-                if (binary_03H_parity == "00")
-                {
-                    CB_PARITY.Text = "8N1";
-                }
-                check_parity = CB_PARITY.Text;
-
-                //configuracion para air rate
-                if (binary_03H_airRate == "000")
-                {
-                    cb_air_rate.Text = "0.3K";
-                }
-                if (binary_03H_airRate == "001")
-                {
-                    cb_air_rate.Text = "1.2K";
-                }
-                if (binary_03H_airRate == "010")
-                {
-                    cb_air_rate.Text = "2.4K";
-                }
-                if (binary_03H_airRate == "011")
-                {
-                    cb_air_rate.Text = "4.8K";
-                }
-                if (binary_03H_airRate == "100")
-                {
-                    cb_air_rate.Text = "9.6K";
-                }
-                if (binary_03H_airRate == "101")
-                {
-                    cb_air_rate.Text = "19.2K";
-                }
-                if (binary_03H_airRate == "110")
-                {
-                    cb_air_rate.Text = "38.4K";
-                }
-                if (binary_03H_airRate == "111")
-                {
-                    cb_air_rate.Text = "62.5K";
-                }
-                check_air = cb_air_rate.Text;
-
-                //channel Canal 05H
-                int channel = Convert.ToUInt16(partes[9], 16);
-                tx_channel.Text = Convert.ToString(channel);
-                check_channel = tx_channel.Text;
-
-                //CONFIG 06H
-
-                string binary_06H = Convert.ToString(Convert.ToInt32(partes[10], 16), 2); //03H
-
-                while (binary_06H.Length < 8)
-                {
-                    binary_06H = "0" + binary_06H;
-                }
-
-                int delimitador_06H = binary_06H.IndexOf('b');
-                string binary_06H_RSSI = binary_06H.Substring(delimitador_06H + 1, 1);
-                string binary_06H_FIXED = binary_06H.Substring(delimitador_06H + 2, 1);
-                string binary_06H_RElay = binary_06H.Substring(delimitador_06H + 3, 1);
-                string binary_06H_LBT = binary_06H.Substring(delimitador_06H + 4, 1);
-                string binary_06H_WORCONTROL = binary_06H.Substring(delimitador_06H + 5, 1);
-                string binary_06H_Wcycle = binary_06H.Substring(delimitador_06H + 6, 3);
-
-                //Packet rssi
-                if (binary_06H_RSSI == "0")
-                {
-                    cb_Prssi.Text = "Disable";
-                }
-                if (binary_06H_RSSI == "1")
-                {
-                    cb_Prssi.Text = "Enable";
-                }
-                check_RSSI = cb_Prssi.Text;
-
-                //tran mode
-                if (binary_06H_FIXED == "0")
-                {
-                    cb_tranMode.Text = "Normal";
-                }
-                if (binary_06H_FIXED == "1")
-                {
-                    cb_tranMode.Text = "Fixed";
-                }
-                check_fixed = cb_tranMode.Text;
-
-                //relay
-                if (binary_06H_RElay == "0")
-                {
-                    cb_relay.Text = "Disable";
-                }
-                if (binary_06H_RElay == "1")
-                {
-                    cb_relay.Text = "Enable";
-                }
-                check_relay = cb_relay.Text;
-
-                //LBT
-                if (binary_06H_LBT == "0")
-                {
-                    cb_lbt.Text = "Disable";
-                }
-                if (binary_06H_LBT == "1")
-                {
-                    cb_lbt.Text = "Enable";
-                }
-                check_LBT = cb_lbt.Text;
-
-                //wor_control
-                if (binary_06H_WORCONTROL == "0")
-                {
-                    cb_Wrole.Text = "Recieve";
-                }
-                if (binary_06H_WORCONTROL == "1")
-                {
-                    cb_Wrole.Text = "Translate";
-                }
-                check_Wrole = cb_Wrole.Text;
-
-                //wor cycle
-
-                if (binary_06H_Wcycle == "000")
-                {
-                    cb_Wcycle.Text = "500ms";
-                }
-                if (binary_06H_Wcycle == "001")
-                {
-                    cb_Wcycle.Text = "1000ms";
-                }
-                if (binary_06H_Wcycle == "010")
-                {
-                    cb_Wcycle.Text = "1500ms";
-                }
-                if (binary_06H_Wcycle == "011")
-                {
-                    cb_Wcycle.Text = "2000ms";
-                }
-                if (binary_06H_Wcycle == "100")
-                {
-                    cb_Wcycle.Text = "2500ms";
-                }
-                if (binary_06H_Wcycle == "101")
-                {
-                    cb_Wcycle.Text = "3000ms";
-                }
-                if (binary_06H_Wcycle == "110")
-                {
-                    cb_Wcycle.Text = "3500ms";
-                }
-                if (binary_06H_Wcycle == "111")
-                {
-                    cb_Wcycle.Text = "4000ms";
-                }
-                check_Wcycle = cb_Wcycle.Text;
-
-                // key 
-                string key = partes[11] + partes[12];
-
-                int key_0 = Convert.ToInt32(key, 16);
+                    // int addres_0 = Convert.ToInt32(addres, 16);
+                    tx_addres.Text = Convert.ToString(addres);
+                    check_addres = tx_addres.Text; // valor de cambio para visualizacion
 
 
-                tx_key.Text = Convert.ToString(key_0);
-                check_Key = tx_key.Text;
+                    // extraccion de datos de net id
+                    int Net_ID = Convert.ToUInt16(partes[6], 16);
+                    tx_net_id.Text = Convert.ToString(Net_ID);
+                    check_net_id = tx_net_id.Text;
+
+                    //comienzo de la configuracion de lectura en addres 03H
+                    string binary_03H = Convert.ToString(Convert.ToInt32(partes[7], 16), 2); //03H
+                    while (binary_03H.Length < 8)
+                    {
+                        binary_03H = "0" + binary_03H;
+                    }
+
+                    binary_03H = "b" + binary_03H;
+                    int delimitador;
+                    string binary_03H_baudrate = "";
+                    string binary_03H_parity = "";
+                    string binary_03H_airRate = "";
+                    //  MessageBox.Show(binary_03H);
+                    try
+                    {
+                        delimitador = binary_03H.IndexOf('b');
+                        binary_03H_baudrate = binary_03H.Substring(delimitador + 1, 3);
+                        binary_03H_parity = binary_03H.Substring(delimitador + 4, 2);
+                        binary_03H_airRate = binary_03H.Substring(delimitador + 6, 3);
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+
+                    // MessageBox.Show(partes[4]);   
+                    //-C1-00-09-1D-4D-0A-62-00-02-03-00-00
+                    //-C1-00-09-F8-0A-68-02-03-00-00-00-00
+                    // 9600 8n1 2.4
+
+                    //configuracion para baud rate
+                    if (binary_03H_baudrate == "000")
+                    {
+                        CB_baudRate.Text = "1200";
+                    }
+                    if (binary_03H_baudrate == "001")
+                    {
+                        CB_baudRate.Text = "2400";
+                    }
+                    if (binary_03H_baudrate == "010")
+                    {
+                        CB_baudRate.Text = "4800";
+                    }
+                    if (binary_03H_baudrate == "011")
+                    {
+                        CB_baudRate.Text = "9600";
+                    }
+                    if (binary_03H_baudrate == "100")
+                    {
+                        CB_baudRate.Text = "19200";
+                    }
+                    if (binary_03H_baudrate == "101")
+                    {
+                        CB_baudRate.Text = "38400";
+                    }
+                    if (binary_03H_baudrate == "110")
+                    {
+                        CB_baudRate.Text = "57600";
+                    }
+                    if (binary_03H_baudrate == "111")
+                    {
+                        CB_baudRate.Text = "115200";
+                    }
+                    check_baud = CB_baudRate.Text;
+
+                    //configuracion 04H
+                    string binary_04H = Convert.ToString(Convert.ToInt32(partes[8], 16), 2); //03H
+
+                    while (binary_04H.Length < 8)
+                    {
+                        binary_04H = "0" + binary_04H;
+                    }
+
+                    int delimitador_04H = binary_04H.IndexOf('b');
+                    string binary_04H_Psize = binary_04H.Substring(delimitador_04H + 1, 2);
+                    string binary_04H_RSSI = binary_04H.Substring(delimitador_04H + 3, 1);
+                    string binary_04H_power = binary_04H.Substring(delimitador_04H + 7, 2);
+
+                    //configuracion de packet size 
+
+                    if (binary_04H_Psize == "00")
+                    {
+                        cb_Psize.Text = "240 bytes";
+                    }
+                    if (binary_04H_Psize == "01")
+                    {
+                        cb_Psize.Text = "128 bytes";
+                    }
+                    if (binary_04H_Psize == "10")
+                    {
+                        cb_Psize.Text = "64 bytes";
+                    }
+                    if (binary_04H_Psize == "11")
+                    {
+                        cb_Psize.Text = "32 bytes";
+                    }
+                    check_Psize = cb_Psize.Text;
+
+                    //configuracion rssi
+
+                    if (binary_04H_RSSI == "0")
+                    {
+                        cb_Crssi.Text = "Disable";
+                    }
+                    if (binary_04H_RSSI == "1")
+                    {
+                        cb_Crssi.Text = "Enable";
+                    }
+                    check_crssi = cb_Crssi.Text;
+
+                    //configuracion power
+                    if (binary_04H_power == "00")
+                    {
+                        cb_power.Text = "30dBm";
+                    }
+                    if (binary_04H_power == "01")
+                    {
+                        cb_power.Text = "27dBm";
+                    }
+                    if (binary_04H_power == "10")
+                    {
+                        cb_power.Text = "24dBm";
+                    }
+                    if (binary_04H_power == "11")
+                    {
+                        cb_power.Text = "21dBm";
+                    }
+                    check_power = cb_power.Text;
+
+                    //configuracion para parity
+                    if (binary_03H_parity == "10")
+                    {
+                        CB_PARITY.Text = "8E1";
+                    }
+                    if (binary_03H_parity == "01")
+                    {
+                        CB_PARITY.Text = "8O1";
+                    }
+                    if (binary_03H_parity == "00")
+                    {
+                        CB_PARITY.Text = "8N1";
+                    }
+                    check_parity = CB_PARITY.Text;
+
+                    //configuracion para air rate
+                    if (binary_03H_airRate == "000")
+                    {
+                        cb_air_rate.Text = "0.3K";
+                    }
+                    if (binary_03H_airRate == "001")
+                    {
+                        cb_air_rate.Text = "1.2K";
+                    }
+                    if (binary_03H_airRate == "010")
+                    {
+                        cb_air_rate.Text = "2.4K";
+                    }
+                    if (binary_03H_airRate == "011")
+                    {
+                        cb_air_rate.Text = "4.8K";
+                    }
+                    if (binary_03H_airRate == "100")
+                    {
+                        cb_air_rate.Text = "9.6K";
+                    }
+                    if (binary_03H_airRate == "101")
+                    {
+                        cb_air_rate.Text = "19.2K";
+                    }
+                    if (binary_03H_airRate == "110")
+                    {
+                        cb_air_rate.Text = "38.4K";
+                    }
+                    if (binary_03H_airRate == "111")
+                    {
+                        cb_air_rate.Text = "62.5K";
+                    }
+                    check_air = cb_air_rate.Text;
+
+                    //channel Canal 05H
+                    int channel = Convert.ToUInt16(partes[9], 16);
+                    tx_channel.Text = Convert.ToString(channel);
+                    check_channel = tx_channel.Text;
+
+                    //CONFIG 06H
+
+                    string binary_06H = Convert.ToString(Convert.ToInt32(partes[10], 16), 2); //03H
+
+                    while (binary_06H.Length < 8)
+                    {
+                        binary_06H = "0" + binary_06H;
+                    }
+
+                    int delimitador_06H = binary_06H.IndexOf('b');
+                    string binary_06H_RSSI = binary_06H.Substring(delimitador_06H + 1, 1);
+                    string binary_06H_FIXED = binary_06H.Substring(delimitador_06H + 2, 1);
+                    string binary_06H_RElay = binary_06H.Substring(delimitador_06H + 3, 1);
+                    string binary_06H_LBT = binary_06H.Substring(delimitador_06H + 4, 1);
+                    string binary_06H_WORCONTROL = binary_06H.Substring(delimitador_06H + 5, 1);
+                    string binary_06H_Wcycle = binary_06H.Substring(delimitador_06H + 6, 3);
+
+                    //Packet rssi
+                    if (binary_06H_RSSI == "0")
+                    {
+                        cb_Prssi.Text = "Disable";
+                    }
+                    if (binary_06H_RSSI == "1")
+                    {
+                        cb_Prssi.Text = "Enable";
+                    }
+                    check_RSSI = cb_Prssi.Text;
+
+                    //tran mode
+                    if (binary_06H_FIXED == "0")
+                    {
+                        cb_tranMode.Text = "Normal";
+                    }
+                    if (binary_06H_FIXED == "1")
+                    {
+                        cb_tranMode.Text = "Fixed";
+                    }
+                    check_fixed = cb_tranMode.Text;
+
+                    //relay
+                    if (binary_06H_RElay == "0")
+                    {
+                        cb_relay.Text = "Disable";
+                    }
+                    if (binary_06H_RElay == "1")
+                    {
+                        cb_relay.Text = "Enable";
+                    }
+                    check_relay = cb_relay.Text;
+
+                    //LBT
+                    if (binary_06H_LBT == "0")
+                    {
+                        cb_lbt.Text = "Disable";
+                    }
+                    if (binary_06H_LBT == "1")
+                    {
+                        cb_lbt.Text = "Enable";
+                    }
+                    check_LBT = cb_lbt.Text;
+
+                    //wor_control
+                    if (binary_06H_WORCONTROL == "0")
+                    {
+                        cb_Wrole.Text = "Recieve";
+                    }
+                    if (binary_06H_WORCONTROL == "1")
+                    {
+                        cb_Wrole.Text = "Translate";
+                    }
+                    check_Wrole = cb_Wrole.Text;
+
+                    //wor cycle
+
+                    if (binary_06H_Wcycle == "000")
+                    {
+                        cb_Wcycle.Text = "500ms";
+                    }
+                    if (binary_06H_Wcycle == "001")
+                    {
+                        cb_Wcycle.Text = "1000ms";
+                    }
+                    if (binary_06H_Wcycle == "010")
+                    {
+                        cb_Wcycle.Text = "1500ms";
+                    }
+                    if (binary_06H_Wcycle == "011")
+                    {
+                        cb_Wcycle.Text = "2000ms";
+                    }
+                    if (binary_06H_Wcycle == "100")
+                    {
+                        cb_Wcycle.Text = "2500ms";
+                    }
+                    if (binary_06H_Wcycle == "101")
+                    {
+                        cb_Wcycle.Text = "3000ms";
+                    }
+                    if (binary_06H_Wcycle == "110")
+                    {
+                        cb_Wcycle.Text = "3500ms";
+                    }
+                    if (binary_06H_Wcycle == "111")
+                    {
+                        cb_Wcycle.Text = "4000ms";
+                    }
+                    check_Wcycle = cb_Wcycle.Text;
+
+                    // key 
+                    string key = partes[11] + partes[12];
+
+                    int key_0 = Convert.ToInt32(key, 16);
+
+
+                    tx_key.Text = Convert.ToString(key_0);
+                    check_Key = tx_key.Text;
+                }
+                timer_set.Stop();
             }
-            timer_set.Stop();
-
         }
 
         private void CB_baudRate_SelectedIndexChanged(object sender, EventArgs e)
@@ -1813,7 +1859,8 @@ namespace EBYTE_NAS
 
         private void timer2_get_Tick(object sender, EventArgs e)
         {
-                terminalLb.Text = "";
+                
+            terminalLb.Text = "";
                 timer2_get.Stop();
                 if (puerto.IsOpen)
                 {
@@ -1830,29 +1877,118 @@ namespace EBYTE_NAS
 
         private void timer_module_Tick(object sender, EventArgs e)
         {
-            timer_module.Stop();
-            if (terminalLb.Text.Length >= 21)
+            if (cb_module.SelectedItem == "E22")
             {
-                string hex = terminalLb.Text;
-
-                if (terminalLb.Text.Contains("-44-45-56-54-59-50-45-"))
+                timer_module.Stop();
+                if (terminalLb.Text.Length >= 21)
                 {
-                    hex = terminalLb.Text;
-                    hex = hex.Replace("-", ""); // Elimina los guiones del string hex
+                    string hex = terminalLb.Text;
 
-                    byte[] bytes = new byte[hex.Length / 2];
-                    for (int i = 0; i < bytes.Length; i++)
+                    if (terminalLb.Text.Contains("-44-45-56-54-59-50-45-"))
                     {
-                        bytes[i] = Convert.ToByte(hex.Substring(i * 2, 2), 16);
-                    }
+                        hex = terminalLb.Text;
+                        hex = hex.Replace("-", ""); // Elimina los guiones del string hex
 
-                    string result = Encoding.ASCII.GetString(bytes);
-                    lb_module_type.Text = result;
-                    terminalLb.Text = "";
+                        byte[] bytes = new byte[hex.Length / 2];
+                        for (int i = 0; i < bytes.Length; i++)
+                        {
+                            bytes[i] = Convert.ToByte(hex.Substring(i * 2, 2), 16);
+                        }
+
+                        string result = Encoding.ASCII.GetString(bytes);
+                        lb_module_type.Text = result;
+                        terminalLb.Text = "";
+                    }
                 }
+                timer2_get.Start();
             }
-            timer2_get.Start();
+            if (cb_module.SelectedItem == "E32")
+            {
+                
+                if (terminalLb.Text.Length >= 21)
+                {
+                    string hex = terminalLb.Text;
+
+                    if (terminalLb.Text.Contains("-44-45-56-54-59-50-45-"))
+                    {
+                        hex = terminalLb.Text;
+                        hex = hex.Replace("-", ""); // Elimina los guiones del string hex
+
+                        byte[] bytes = new byte[hex.Length / 2];
+                        for (int i = 0; i < bytes.Length; i++)
+                        {
+                            bytes[i] = Convert.ToByte(hex.Substring(i * 2, 2), 16);
+                        }
+
+                        string result = Encoding.ASCII.GetString(bytes);
+                        lb_module_type.Text = result;
+                        terminalLb.Text = "";
+                        timer_module.Stop();
+                    }
+                }
+                timer2_get.Start();
+
+            }
+
+            }
+
+        private void CB_PARITY_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
+
+        private void pictureBox2_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_module_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cb_module.SelectedItem == "E32")
+            {
+                tx_net_id.Hide();
+                tx_key.Hide();
+                pic_key.Hide();
+                lb_netID.Hide();
+                bunifuPanel2.Size = new Size(300, 223);
+
+                //panel de configuracion
+                cb_Prssi.Hide();
+                bunifuLabel19.Hide();
+                pic_Prsi.Hide();
+
+                cb_Crssi.Hide();
+                lb_rssi.Hide();
+                pic_Crsi.Hide();
+
+                lb_LBT.Hide();
+                cb_lbt.Hide();
+                pic_LBT.Hide();
+
+                cb_relay.Hide();
+                pic_Relay.Hide();
+                lb_relay.Hide();
+
+
+
+                lb_TranMode.Text = "IO Mode";
+                lb_WorCycle.Text = "Wor Timing";
+                lb_WorROLE.Text = "Fixed Mode";
+                lb_PacketSize.Text = "FEC";
+
+                bunifuLabel6.Location = new Point(14, 540);
+
+
+
+
+
+            }
+        }
+
+        private void pictureBox2_Click_3(object sender, EventArgs e)
+        {
+            
+            }
 
         private void cb_puertos_DropDown_1(object sender, EventArgs e)
         {

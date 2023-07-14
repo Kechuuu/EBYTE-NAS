@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace EBYTE_NAS
 {
@@ -19,7 +20,7 @@ namespace EBYTE_NAS
 
             InitializeComponent();
             puerto = new SerialPort();
-            cb_module.Text = "E22";
+            cb_module.Text = "E32";
             tx_addres.PlaceholderText = "Enter HEX format 0 - FF FF";
             tx_channel.PlaceholderText = "Enter HEX format 0 - 50";
             tx_net_id.PlaceholderText = "Enter HEX format 0 - FF FF";
@@ -27,7 +28,7 @@ namespace EBYTE_NAS
             btn_conectar.Image = global::EBYTE_NAS.Properties.Resources.port_close;
             puerto.DataReceived += Puerto_DataReceived;
 
-
+            
 
         }
 
@@ -216,400 +217,508 @@ namespace EBYTE_NAS
         {
             if (puerto.IsOpen)
             {
-
-                //%NI=Coordinador,MAC=
-                //25 4E 49 3D - 43 6F 6F 72 64 69 6E 61 64 6F 72 2C - 4D 41 43 3D  - 11 24 B3 11 52 01 25 - 25
-                try
+                terminalLb.Text = "";
+                if (cb_module.SelectedItem == "E22")
                 {
-                    string Binariosbaud = "";
-                    string Binarioparity = "";
-                    string BinariosAIR = "";
-                    terminalLb.Text = "";
+                    //%NI=Coordinador,MAC=
+                    //25 4E 49 3D - 43 6F 6F 72 64 69 6E 61 64 6F 72 2C - 4D 41 43 3D  - 11 24 B3 11 52 01 25 - 25
+                    try
+                    {
+                        string Binariosbaud = "";
+                        string Binarioparity = "";
+                        string BinariosAIR = "";
+                        terminalLb.Text = "";
 
-                    //direccion 03H
-                    //condiciones para el baud
-                    if (CB_baudRate.Text == "1200")
-                    {
-                        Binariosbaud = "000";
-                    }
-                    if (CB_baudRate.Text == "2400")
-                    {
-                        Binariosbaud = "001";
-                    }
-                    if (CB_baudRate.Text == "4800")
-                    {
-                        Binariosbaud = "010";
-                    }
-                    if (CB_baudRate.Text == "9600")
-                    {
-                        Binariosbaud = "011";
-                    }
-                    if (CB_baudRate.Text == "19200")
-                    {
-                        Binariosbaud = "100";
-                    }
-                    if (CB_baudRate.Text == "38400")
-                    {
-                        Binariosbaud = "101";
-                    }
-                    if (CB_baudRate.Text == "57600")
-                    {
-                        Binariosbaud = "110";
-                    }
-                    if (CB_baudRate.Text == "115200")
-                    {
-                        Binariosbaud = "111";
-                    }
-
-                    if (check_baud == CB_baudRate.Text)
-                    {
-                        lb_BaudRate.Text = "Baud Rate";
-                        lb_BaudRate.ForeColor = Color.White;
-                    }
-                    else
-                    {
-                        if (CB_baudRate.Text != "")
+                        //direccion 03H
+                        //condiciones para el baud
+                        if (CB_baudRate.Text == "1200")
                         {
-                            lb_BaudRate.Text = "Baud Rate ✔";
-                        lb_BaudRate.ForeColor = Color.Green;
+                            Binariosbaud = "000";
+                        }
+                        if (CB_baudRate.Text == "2400")
+                        {
+                            Binariosbaud = "001";
+                        }
+                        if (CB_baudRate.Text == "4800")
+                        {
+                            Binariosbaud = "010";
+                        }
+                        if (CB_baudRate.Text == "9600")
+                        {
+                            Binariosbaud = "011";
+                        }
+                        if (CB_baudRate.Text == "19200")
+                        {
+                            Binariosbaud = "100";
+                        }
+                        if (CB_baudRate.Text == "38400")
+                        {
+                            Binariosbaud = "101";
+                        }
+                        if (CB_baudRate.Text == "57600")
+                        {
+                            Binariosbaud = "110";
+                        }
+                        if (CB_baudRate.Text == "115200")
+                        {
+                            Binariosbaud = "111";
+                        }
+
+                        if (check_baud == CB_baudRate.Text)
+                        {
+                            lb_BaudRate.Text = "Baud Rate";
+                            lb_BaudRate.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            if (CB_baudRate.Text != "")
+                            {
+                                lb_BaudRate.Text = "Baud Rate ✔";
+                                lb_BaudRate.ForeColor = Color.Green;
+                            }
+                        }
+
+
+                        //condiciones para LA PARIDAD
+                        if (CB_PARITY.Text == "8N1")
+                        {
+                            Binarioparity = "00";
+                        }
+                        if (CB_PARITY.Text == "8O1")
+                        {
+                            Binarioparity = "01";
+                        }
+                        if (CB_PARITY.Text == "8E1")
+                        {
+                            Binarioparity = "10";
+                        }
+
+                        if (check_parity == CB_PARITY.Text)
+                        {
+                            lb_Parity.Text = "Parity";
+                            lb_Parity.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            if (CB_PARITY.Text != "")
+                            {
+                                lb_Parity.Text = "Parity ✔";
+                                lb_Parity.ForeColor = Color.Green;
+                            }
+
+                        }
+
+                        //condiciones para el air rate
+                        if (cb_air_rate.Text == "0.3K")
+                        {
+                            BinariosAIR = "000";
+                        }
+                        if (cb_air_rate.Text == "1.2K")
+                        {
+                            BinariosAIR = "001";
+                        }
+                        if (cb_air_rate.Text == "2.4K")
+                        {
+                            BinariosAIR = "010";
+                        }
+                        if (cb_air_rate.Text == "4.8K")
+                        {
+                            BinariosAIR = "011";
+                        }
+                        if (cb_air_rate.Text == "9.6K")
+                        {
+                            BinariosAIR = "100";
+                        }
+                        if (cb_air_rate.Text == "19.2K")
+                        {
+                            BinariosAIR = "101";
+                        }
+                        if (cb_air_rate.Text == "38.4K")
+                        {
+                            BinariosAIR = "110";
+                        }
+                        if (cb_air_rate.Text == "62.5K")
+                        {
+                            BinariosAIR = "111";
+                        }
+
+                        if (check_air == cb_air_rate.Text)
+                        {
+                            lb_Air.Text = "Air Rate";
+                            lb_Air.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            if (cb_air_rate.Text != "")
+                            {
+                                lb_Air.Text = "Air Rate ✔";
+                                lb_Air.ForeColor = Color.Green;
+                            }
+                        }
+
+
+
+
+                        //DIRECIION 04H
+                        string BinariosPsize = "";
+                        string BinariRSSI = "";
+                        string Binarioreserve = "000";
+                        string BinariosPower = "";
+
+                        //binarios packet size
+
+                        if (cb_Psize.Text == "240 bytes")
+                        {
+                            BinariosPsize = "00";
+                        }
+                        if (cb_Psize.Text == "128 bytes")
+                        {
+                            BinariosPsize = "01";
+                        }
+                        if (cb_Psize.Text == "64 bytes")
+                        {
+                            BinariosPsize = "10";
+                        }
+                        if (cb_Psize.Text == "32 bytes")
+                        {
+                            BinariosPsize = "11";
+                        }
+                        if (check_Psize == cb_Psize.Text)
+                        {
+                            lb_PacketSize.Text = "Packet Size";
+                            lb_PacketSize.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            if (cb_Psize.Text != "")
+                            {
+                                lb_PacketSize.Text = "Packet Size ✔";
+                                lb_PacketSize.ForeColor = Color.Green;
+                            }
+                        }
+
+
+                        //binarios para RSSI
+                        if (cb_Crssi.Text == "Disable")
+                        {
+                            BinariRSSI = "0";
+                        }
+                        if (cb_Crssi.Text == "Enable")
+                        {
+                            BinariRSSI = "1";
+                        }
+                        if (check_RSSI == cb_Crssi.Text)
+                        {
+                            lb_rssi.Text = "Channel RSSI";
+                            lb_rssi.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            if (cb_Crssi.Text != "")
+                            {
+                                lb_rssi.Text = "Channel RSSI ✔";
+                                lb_rssi.ForeColor = Color.Green;
+                            }
+                        }
+
+                        //los binarios direccion 4 3 2 reservados = 0 0 0
+
+                        //binarios power
+
+                        if (cb_power.Text == "30dBm")
+                        {
+                            BinariosPower = "00";
+                        }
+                        if (cb_power.Text == "27dBm")
+                        {
+                            BinariosPower = "01";
+                        }
+                        if (cb_power.Text == "24dBm")
+                        {
+                            BinariosPower = "10";
+                        }
+                        if (cb_power.Text == "21dBm")
+                        {
+                            BinariosPower = "11";
+                        }
+                        if (check_power == cb_power.Text)
+                        {
+                            lb_Power.Text = "Power";
+                            lb_Power.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            if (cb_power.Text != "")
+                            {
+                                lb_Power.Text = "Power ✔";
+                                lb_Power.ForeColor = Color.Green;
+                            }
+                        }
+
+                        //DIRECIION 06H
+                        string BinariosE_RSSI = "";
+                        string Binari_fixed = "";
+                        string Binarior_reply = "";
+                        string Binarios_LBT = "";
+                        string Binarios_Wtrans = "";
+                        string Binarios_Wcycle = "";
+
+                        //Packet rssi
+                        if (cb_Prssi.Text == "Disable")
+                        {
+                            BinariosE_RSSI = "0";
+                        }
+                        if (cb_Prssi.Text == "Enable")
+                        {
+                            BinariosE_RSSI = "1";
+                        }
+
+                        //tran mode
+                        if (cb_tranMode.Text == "Normal")
+                        {
+                            Binari_fixed = "0";
+                        }
+                        if (cb_tranMode.Text == "Fixed")
+                        {
+                            Binari_fixed = "1";
+                        }
+                        if (check_fixed == cb_tranMode.Text)
+                        {
+                            lb_TranMode.Text = "Tran Mode";
+                            lb_TranMode.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            if (cb_tranMode.Text != "")
+                            {
+                                lb_TranMode.Text = "Tran Mode ✔";
+                                lb_TranMode.ForeColor = Color.Green;
+                            }
+                        }
+
+                        //relay
+                        if (cb_relay.Text == "Disable")
+                        {
+                            Binarior_reply = "0";
+                        }
+                        if (cb_relay.Text == "Enable")
+                        {
+                            Binarior_reply = "1";
+                        }
+                        if (check_relay == cb_relay.Text)
+                        {
+                            lb_relay.Text = "Relay";
+                            lb_relay.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            if (cb_relay.Text != "")
+                            {
+                                lb_relay.Text = "Relay ✔";
+                                lb_relay.ForeColor = Color.Green;
+                            }
+                        }
+
+                        //LBT
+                        if (cb_lbt.Text == "Disable")
+                        {
+                            Binarios_LBT = "0";
+                        }
+                        if (cb_lbt.Text == "Enable")
+                        {
+                            Binarios_LBT = "1";
+                        }
+                        if (check_LBT == cb_lbt.Text)
+                        {
+                            lb_LBT.Text = "LBT";
+                            lb_LBT.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            if (cb_lbt.Text != "")
+                            {
+                                lb_LBT.Text = "LBT ✔";
+                                lb_LBT.ForeColor = Color.Green;
+                            }
+                        }
+
+
+                        //wor_control
+                        if (cb_Wrole.Text == "Recieve")
+                        {
+                            Binarios_Wtrans = "0";
+                        }
+                        if (cb_Wrole.Text == "Translate")
+                        {
+                            Binarios_Wtrans = "1";
+                        }
+
+                        if (check_Wrole == cb_Wrole.Text)
+                        {
+                            lb_WorROLE.Text = "Wor Role";
+                            lb_WorROLE.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            if (cb_Wrole.Text != "")
+                            {
+                                lb_WorROLE.Text = "Wor Role  ✔";
+                                lb_WorROLE.ForeColor = Color.Green;
+                            }
+                        }
+                        //wor cycle
+
+                        if (cb_Wcycle.Text == "500ms")
+                        {
+                            Binarios_Wcycle = "000";
+                        }
+                        if (cb_Wcycle.Text == "1000ms")
+                        {
+                            Binarios_Wcycle = "001";
+                        }
+                        if (cb_Wcycle.Text == "1500ms")
+                        {
+                            Binarios_Wcycle = "010";
+                        }
+                        if (cb_Wcycle.Text == "2000ms")
+                        {
+                            Binarios_Wcycle = "011";
+                        }
+                        if (cb_Wcycle.Text == "2500ms")
+                        {
+                            Binarios_Wcycle = "100";
+                        }
+                        if (cb_Wcycle.Text == "3000ms")
+                        {
+                            Binarios_Wcycle = "101";
+                        }
+                        if (cb_Wcycle.Text == "3500ms")
+                        {
+                            Binarios_Wcycle = "110";
+                        }
+                        if (cb_Wcycle.Text == "4000ms")
+                        {
+                            Binarios_Wcycle = "111";
+                        }
+
+                        if (check_Wcycle == cb_Wcycle.Text)
+                        {
+                            lb_WorCycle.Text = "Wor Cycle";
+                            lb_WorCycle.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            if (cb_Wcycle.Text != "")
+                            {
+                                lb_WorCycle.Text = "Wor cycle ✔";
+                                lb_WorCycle.ForeColor = Color.Green;
+                            }
+                        }
+
+                        //conversion de la direccion 01H
+                        if (tx_addres.Text != string.Empty)
+                        {
+
+
+                            string addres = tx_addres.Text;
+                            if (addres == check_addres || addres == checj_addres_set)
+                            {
+                                lb_addres.Text = "Addres";
+                                lb_addres.ForeColor = Color.White;
+                            }
+                            else
+                            {
+
+                                lb_addres.Text = "Addres ✔";
+                                lb_addres.ForeColor = Color.Green;
+                            }
+
+                            string addres_s = addres.Substring(0, 2);
+                            string addres_i = addres.Substring(3, 2);
+                            // MessageBox.Show(addres_s + addres_i);
+
+                            //conversion net id 02H
+                            string net_id = tx_net_id.Text;
+                            if (tx_net_id.Text == check_net_id)
+                            {
+                                lb_netID.Text = "Net ID";
+                                lb_netID.ForeColor = Color.White;
+                            }
+                            else
+                            {
+
+                                lb_netID.Text = "Net ID ✔";
+                                lb_netID.ForeColor = Color.Green;
+                            }
+
+
+                            //conversion de la direccion 03H a binario
+                            string Addres_03H = Binariosbaud + Binarioparity + BinariosAIR;
+                            int numeroDecimal = Convert.ToInt32(Addres_03H, 2);
+                            string numeroHexadecimal_03 = numeroDecimal.ToString("X");
+
+
+                            //conversion de la direccion 04H a binarios 
+                            string Addres_04H = BinariosPsize + BinariRSSI + Binarioreserve + BinariosPower;
+                            int numeroDecimal_04 = Convert.ToInt32(Addres_04H, 2);
+                            string numeroHexadecimal_04 = numeroDecimal_04.ToString("X");
+
+
+                            //conversion de la direccion 05H a binarios 
+                            string channel = tx_channel.Text;
+                            if (check_channel == tx_channel.Text)
+                            {
+                                lb_channel.Text = "Channel";
+                                lb_channel.ForeColor = Color.White;
+                            }
+                            else
+                            {
+                                lb_channel.Text = "Channel ✔";
+                                lb_channel.ForeColor = Color.Green;
+                            }
+
+
+                            //conversion de la direccion 06H a binarios 
+                            string Addres_06H = BinariosE_RSSI + Binari_fixed + Binarior_reply + Binarios_LBT + Binarios_Wtrans + Binarios_Wcycle;
+
+                            int numeroDecimal_06H = Convert.ToInt32(Addres_06H, 2);
+                            string numeroHexadecimal_06 = numeroDecimal_06H.ToString("X");
+
+
+
+
+                            byte resultado_01 = byte.Parse(addres_s, System.Globalization.NumberStyles.HexNumber);
+                            byte resultado_01_1 = byte.Parse(addres_i, System.Globalization.NumberStyles.HexNumber);
+                            byte resultado_02 = byte.Parse(net_id, System.Globalization.NumberStyles.HexNumber);
+                            byte resultado_03 = byte.Parse(numeroHexadecimal_03, System.Globalization.NumberStyles.HexNumber);
+                            byte resultado_04H = byte.Parse(numeroHexadecimal_04, System.Globalization.NumberStyles.HexNumber);
+                            byte resultado_05H = byte.Parse(channel, System.Globalization.NumberStyles.HexNumber);
+                            byte resultado_06H = byte.Parse(numeroHexadecimal_06, System.Globalization.NumberStyles.HexNumber);
+
+
+
+                            //byte[] hexMessage = {  };
+                            byte[] hexMessage2 = { 0xC0, 0x00, 0x09, resultado_01, resultado_01_1, resultado_02, resultado_03, resultado_04H, resultado_05H, resultado_06H, 0x00, 0x00 }; //-C1-00-09-00-F8-0A-60-C0-1E-80-00-00
+                                                                                                                                                                                          // puerto.Write(hexMessage, 0, hexMessage.Length);
+                            puerto.Write(hexMessage2, 0, hexMessage2.Length);
+                            //puerto.Write(mensaje_byte_tamaño, 0, mensaje_byte_tamaño.Length);
+                            timer_set.Start();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("no hay datos");
+                        }
+
+                    }
+                    catch (Exception error)
+                    {
+
+                        MessageBox.Show(error.Message);
                     }
                 }
-
-
-                    //condiciones para LA PARIDAD
-                    if (CB_PARITY.Text == "8N1")
-                    {
-                        Binarioparity = "00";
-                    }
-                    if (CB_PARITY.Text == "8O1")
-                    {
-                        Binarioparity = "01";
-                    }
-                    if (CB_PARITY.Text == "8E1")
-                    {
-                        Binarioparity = "10";
-                    }
-
-                    if (check_parity == CB_PARITY.Text)
-                    {
-                        lb_Parity.Text = "Parity";
-                        lb_Parity.ForeColor = Color.White;
-                    }
-                    else
-                    {
-                        if (CB_PARITY.Text != "")
-                        {
-                            lb_Parity.Text = "Parity ✔";
-                            lb_Parity.ForeColor = Color.Green;
-                        }
-                        
-                    }
-
-                    //condiciones para el air rate
-                    if (cb_air_rate.Text == "0.3K")
-                    {
-                        BinariosAIR = "000";
-                    }
-                    if (cb_air_rate.Text == "1.2K")
-                    {
-                        BinariosAIR = "001";
-                    }
-                    if (cb_air_rate.Text == "2.4K")
-                    {
-                        BinariosAIR = "010";
-                    }
-                    if (cb_air_rate.Text == "4.8K")
-                    {
-                        BinariosAIR = "011";
-                    }
-                    if (cb_air_rate.Text == "9.6K")
-                    {
-                        BinariosAIR = "100";
-                    }
-                    if (cb_air_rate.Text == "19.2K")
-                    {
-                        BinariosAIR = "101";
-                    }
-                    if (cb_air_rate.Text == "38.4K")
-                    {
-                        BinariosAIR = "110";
-                    }
-                    if (cb_air_rate.Text == "62.5K")
-                    {
-                        BinariosAIR = "111";
-                    }
-
-                    if (check_air == cb_air_rate.Text)
-                    {
-                        lb_Air.Text = "Air Rate";
-                        lb_Air.ForeColor = Color.White;
-                    }
-                    else
-                    {
-                        if (cb_air_rate.Text != "")
-                        {
-                            lb_Air.Text = "Air Rate ✔";
-                            lb_Air.ForeColor = Color.Green;
-                        }
-                    }
-
-
-                    //DIRECIION 04H
-                    string BinariosPsize = "";
-                    string BinariRSSI = "";
-                    string Binarioreserve = "000";
-                    string BinariosPower = "";
-
-                    //binarios packet size
-
-                    if (cb_Psize.Text == "240 bytes")
-                    {
-                        BinariosPsize = "00";
-                    }
-                    if (cb_Psize.Text == "128 bytes")
-                    {
-                        BinariosPsize = "01";
-                    }
-                    if (cb_Psize.Text == "64 bytes")
-                    {
-                        BinariosPsize = "10";
-                    }
-                    if (cb_Psize.Text == "32 bytes")
-                    {
-                        BinariosPsize = "11";
-                    }
-                    if (check_Psize == cb_Psize.Text)
-                    {
-                        lb_PacketSize.Text = "Packet Size";
-                        lb_PacketSize.ForeColor = Color.White;
-                    }
-                    else
-                    {
-                        if (cb_Psize.Text != "")
-                        {
-                            lb_PacketSize.Text = "Packet Size ✔";
-                            lb_PacketSize.ForeColor = Color.Green;
-                        }
-                    }
-
-
-                    //binarios para RSSI
-                    if (cb_Crssi.Text == "Disable")
-                    {
-                        BinariRSSI = "0";
-                    }
-                    if (cb_Crssi.Text == "Enable")
-                    {
-                        BinariRSSI = "1";
-                    }
-                    if (check_RSSI == cb_Crssi.Text)
-                    {
-                        lb_rssi.Text = "Channel RSSI";
-                        lb_rssi.ForeColor = Color.White;
-                    }
-                    else
-                    {
-                        if (cb_Crssi.Text != "")
-                        {
-                            lb_rssi.Text = "Channel RSSI ✔";
-                            lb_rssi.ForeColor = Color.Green;
-                        }
-                    }
-
-                    //los binarios direccion 4 3 2 reservados = 0 0 0
-
-                    //binarios power
-
-                    if (cb_power.Text == "30dBm")
-                    {
-                        BinariosPower = "00";
-                    }
-                    if (cb_power.Text == "27dBm")
-                    {
-                        BinariosPower = "01";
-                    }
-                    if (cb_power.Text == "24dBm")
-                    {
-                        BinariosPower = "10";
-                    }
-                    if (cb_power.Text == "21dBm")
-                    {
-                        BinariosPower = "11";
-                    }
-                    if (check_power == cb_power.Text)
-                    {
-                        lb_Power.Text = "Power";
-                        lb_Power.ForeColor = Color.White;
-                    }
-                    else
-                    {
-                        if (cb_power.Text != "")
-                        {
-                            lb_Power.Text = "Power ✔";
-                            lb_Power.ForeColor = Color.Green;
-                        }
-                    }
-
-                    //DIRECIION 06H
-                    string BinariosE_RSSI = "";
-                    string Binari_fixed = "";
-                    string Binarior_reply = "";
-                    string Binarios_LBT = "";
-                    string Binarios_Wtrans = "";
-                    string Binarios_Wcycle = "";
-
-                    //Packet rssi
-                    if (cb_Prssi.Text == "Disable")
-                    {
-                        BinariosE_RSSI = "0";
-                    }
-                    if (cb_Prssi.Text == "Enable")
-                    {
-                        BinariosE_RSSI = "1";
-                    }
-
-                    //tran mode
-                    if (cb_tranMode.Text == "Normal")
-                    {
-                        Binari_fixed = "0";
-                    }
-                    if (cb_tranMode.Text == "Fixed")
-                    {
-                        Binari_fixed = "1";
-                    }
-                    if (check_fixed == cb_tranMode.Text)
-                    {
-                        lb_TranMode.Text = "Tran Mode";
-                        lb_TranMode.ForeColor = Color.White;
-                    }
-                    else
-                    {
-                        if (cb_tranMode.Text != "")
-                        {
-                            lb_TranMode.Text = "Tran Mode ✔";
-                            lb_TranMode.ForeColor = Color.Green;
-                        }
-                    }
-
-                    //relay
-                    if (cb_relay.Text == "Disable")
-                    {
-                        Binarior_reply = "0";
-                    }
-                    if (cb_relay.Text == "Enable")
-                    {
-                        Binarior_reply = "1";
-                    }
-                    if (check_relay == cb_relay.Text)
-                    {
-                        lb_relay.Text = "Relay";
-                        lb_relay.ForeColor = Color.White;
-                    }
-                    else
-                    {
-                        if (cb_relay.Text != "")
-                        {
-                            lb_relay.Text = "Relay ✔";
-                            lb_relay.ForeColor = Color.Green;
-                        }
-                    }
-
-                    //LBT
-                    if (cb_lbt.Text == "Disable")
-                    {
-                        Binarios_LBT = "0";
-                    }
-                    if (cb_lbt.Text == "Enable")
-                    {
-                        Binarios_LBT = "1";
-                    }
-                    if (check_LBT == cb_lbt.Text)
-                    {
-                        lb_LBT.Text = "LBT";
-                        lb_LBT.ForeColor = Color.White;
-                    }
-                    else
-                    {
-                        if (cb_lbt.Text != "")
-                        {
-                            lb_LBT.Text = "LBT ✔";
-                            lb_LBT.ForeColor = Color.Green;
-                        }
-                    }
-
-
-                    //wor_control
-                    if (cb_Wrole.Text == "Recieve")
-                    {
-                        Binarios_Wtrans = "0";
-                    }
-                    if (cb_Wrole.Text == "Translate")
-                    {
-                        Binarios_Wtrans = "1";
-                    }
-
-                    if (check_Wrole == cb_Wrole.Text)
-                    {
-                        lb_WorROLE.Text = "Wor Role";
-                        lb_WorROLE.ForeColor = Color.White;
-                    }
-                    else
-                    {
-                        if (cb_Wrole.Text != "")
-                        {
-                            lb_WorROLE.Text = "Wor Role  ✔";
-                            lb_WorROLE.ForeColor = Color.Green;
-                        }
-                    }
-                    //wor cycle
-
-                    if (cb_Wcycle.Text == "500ms")
-                    {
-                        Binarios_Wcycle = "000";
-                    }
-                    if (cb_Wcycle.Text == "1000ms")
-                    {
-                        Binarios_Wcycle = "001";
-                    }
-                    if (cb_Wcycle.Text == "1500ms")
-                    {
-                        Binarios_Wcycle = "010";
-                    }
-                    if (cb_Wcycle.Text == "2000ms")
-                    {
-                        Binarios_Wcycle = "011";
-                    }
-                    if (cb_Wcycle.Text == "2500ms")
-                    {
-                        Binarios_Wcycle = "100";
-                    }
-                    if (cb_Wcycle.Text == "3000ms")
-                    {
-                        Binarios_Wcycle = "101";
-                    }
-                    if (cb_Wcycle.Text == "3500ms")
-                    {
-                        Binarios_Wcycle = "110";
-                    }
-                    if (cb_Wcycle.Text == "4000ms")
-                    {
-                        Binarios_Wcycle = "111";
-                    }
-
-                    if (check_Wcycle == cb_Wcycle.Text)
-                    {
-                        lb_WorCycle.Text = "Wor Cycle";
-                        lb_WorCycle.ForeColor = Color.White;
-                    }
-                    else
-                    {
-                        if (cb_Wcycle.Text != "")
-                        {
-                            lb_WorCycle.Text = "Wor cycle ✔";
-                            lb_WorCycle.ForeColor = Color.Green;
-                        }
-                    }
-
+                if (cb_module.SelectedItem == "E32")
+                {
                     //conversion de la direccion 01H
                     if (tx_addres.Text != string.Empty)
                     {
@@ -627,39 +736,244 @@ namespace EBYTE_NAS
                             lb_addres.Text = "Addres ✔";
                             lb_addres.ForeColor = Color.Green;
                         }
+                        terminalLb.Text = "";
 
-                        string addres_s = addres.Substring(0, 2);
-                        string addres_i = addres.Substring(3, 2);
-                        // MessageBox.Show(addres_s + addres_i);
+                        string Binariosbaud = "";
+                        string Binarioparity = "";
+                        string BinariosAIR = "";
 
-                        //conversion net id 02H
-                        string net_id = tx_net_id.Text;
-                        if (tx_net_id.Text == check_net_id)
+                        //CONVERSION DE LA DIRECCION 03H
+                        if (CB_baudRate.Text == "1200")
                         {
-                            lb_netID.Text = "Net ID";
-                            lb_netID.ForeColor = Color.White;
+                            Binariosbaud = "000";
+                        }
+                        if (CB_baudRate.Text == "2400")
+                        {
+                            Binariosbaud = "001";
+                        }
+                        if (CB_baudRate.Text == "4800")
+                        {
+                            Binariosbaud = "010";
+                        }
+                        if (CB_baudRate.Text == "9600")
+                        {
+                            Binariosbaud = "011";
+                        }
+                        if (CB_baudRate.Text == "19200")
+                        {
+                            Binariosbaud = "100";
+                        }
+                        if (CB_baudRate.Text == "38400")
+                        {
+                            Binariosbaud = "101";
+                        }
+                        if (CB_baudRate.Text == "57600")
+                        {
+                            Binariosbaud = "110";
+                        }
+                        if (CB_baudRate.Text == "115200")
+                        {
+                            Binariosbaud = "111";
+                        }
+
+                        if (check_baud == CB_baudRate.Text)
+                        {
+                            lb_BaudRate.Text = "Baud Rate";
+                            lb_BaudRate.ForeColor = Color.White;
                         }
                         else
                         {
-
-                            lb_netID.Text = "Net ID ✔";
-                            lb_netID.ForeColor = Color.Green;
+                            if (CB_baudRate.Text != "")
+                            {
+                                lb_BaudRate.Text = "Baud Rate ✔";
+                                lb_BaudRate.ForeColor = Color.Green;
+                            }
                         }
 
 
-                        //conversion de la direccion 03H a binario
-                        string Addres_03H = Binariosbaud + Binarioparity + BinariosAIR;
+                        //condiciones para LA PARIDAD
+                        if (CB_PARITY.Text == "8N1")
+                        {
+                            Binarioparity = "00";
+                        }
+                        if (CB_PARITY.Text == "8O1")
+                        {
+                            Binarioparity = "01";
+                        }
+                        if (CB_PARITY.Text == "8E1")
+                        {
+                            Binarioparity = "10";
+                        }
+
+                        if (check_parity == CB_PARITY.Text)
+                        {
+                            lb_Parity.Text = "Parity";
+                            lb_Parity.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            if (CB_PARITY.Text != "")
+                            {
+                                lb_Parity.Text = "Parity ✔";
+                                lb_Parity.ForeColor = Color.Green;
+                            }
+
+                        }
+
+                        //condiciones para el air rate
+                        if (cb_air_rate.Text == "0.3K")
+                        {
+                            BinariosAIR = "000";
+                        }
+                        if (cb_air_rate.Text == "1.2K")
+                        {
+                            BinariosAIR = "001";
+                        }
+                        if (cb_air_rate.Text == "2.4K")
+                        {
+                            BinariosAIR = "010";
+                        }
+                        if (cb_air_rate.Text == "4.8K")
+                        {
+                            BinariosAIR = "011";
+                        }
+                        if (cb_air_rate.Text == "9.6K")
+                        {
+                            BinariosAIR = "100";
+                        }
+                        if (cb_air_rate.Text == "19.2K")
+                        {
+                            BinariosAIR = "101";
+                        }
+                        if (cb_air_rate.Text == "38.4K")
+                        {
+                            BinariosAIR = "110";
+                        }
+                        if (cb_air_rate.Text == "62.5K")
+                        {
+                            BinariosAIR = "111";
+                        }
+
+                        if (check_air == cb_air_rate.Text)
+                        {
+                            lb_Air.Text = "Air Rate";
+                            lb_Air.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            if (cb_air_rate.Text != "")
+                            {
+                                lb_Air.Text = "Air Rate ✔";
+                                lb_Air.ForeColor = Color.Green;
+                            }
+                        }
+
+                        //DIRECCION 06H 
+                        string Binarios_fixed = "";
+                        string Binario_ioMode= "";
+                        string Binarios_WakeUp = "";
+                        string Binarios_FEC = "";
+                        string Binarios_Power = "";
+
+                        //FIXED MODE
+                        if (cb_Wrole.Text == "Disable")
+                        {
+                            Binarios_fixed = "0";
+                        }
+                        if (cb_Wrole.Text == "Enable")
+                        {
+                            Binarios_fixed = "1";
+                        }
+
+                        //IO MODE
+                        if (cb_tranMode.Text == "OpenDrain")
+                        {
+                            Binario_ioMode = "0";
+                        }
+                        if (cb_tranMode.Text == "PushPull")
+                        {
+                            Binario_ioMode = "1";
+                        }
+                        //WOR TIMING
+
+                        if (cb_Wcycle.Text == "500ms")
+                        {
+                            Binarios_WakeUp = "000";
+                        }
+                        if (cb_Wcycle.Text == "1000ms")
+                        {
+                            Binarios_WakeUp = "001";
+                        }
+                        if (cb_Wcycle.Text == "1500ms")
+                        {
+                            Binarios_WakeUp = "010";
+                        }
+                        if (cb_Wcycle.Text == "2000ms")
+                        {
+                            Binarios_WakeUp = "011";
+                        }
+                        if (cb_Wcycle.Text == "2500ms")
+                        {
+                            Binarios_WakeUp = "100";
+                        }
+                        if (cb_Wcycle.Text == "3000ms")
+                        {
+                            Binarios_WakeUp = "101";
+                        }
+                        if (cb_Wcycle.Text == "3500ms")
+                        {
+                            Binarios_WakeUp = "110";
+                        }
+                        if (cb_Wcycle.Text == "4000ms")
+                        {
+                            Binarios_WakeUp = "111";
+                        }
+
+
+
+                        //FEC
+                        if (cb_Psize.Text == "Disable")
+                        {
+                            Binarios_FEC = "0"; //Disable
+                        }
+                        if (cb_Psize.Text == "Enable")
+                        {
+                            Binarios_FEC = "1"; //Enable
+                        }
+
+
+                        //configuracion power
+                        if (cb_power.Text == "30dBm")
+                        {
+                            Binarios_Power = "00";
+                        }
+                        if (cb_power.Text == "27dBm")
+                        {
+                            Binarios_Power = "01";
+                        }
+                        if (cb_power.Text == "24dBm")
+                        {
+                            Binarios_Power = "10";
+                        }
+                        if (cb_power.Text == "21dBm")
+                        {
+                            Binarios_Power = "11";
+                        }
+                        check_power = cb_power.Text;
+
+                        string Addres_03H =  Binarioparity+ Binariosbaud  + BinariosAIR;
                         int numeroDecimal = Convert.ToInt32(Addres_03H, 2);
                         string numeroHexadecimal_03 = numeroDecimal.ToString("X");
 
-
-                        //conversion de la direccion 04H a binarios 
-                        string Addres_04H = BinariosPsize + BinariRSSI + Binarioreserve + BinariosPower;
-                        int numeroDecimal_04 = Convert.ToInt32(Addres_04H, 2);
-                        string numeroHexadecimal_04 = numeroDecimal_04.ToString("X");
+                        string Addres_05H = Binarios_fixed + Binario_ioMode + Binarios_WakeUp + Binarios_FEC + Binarios_Power;
+                        int Decimal_05H = Convert.ToInt32(Addres_05H, 2);
+                        string numeroHexadecimal_05 = Decimal_05H.ToString("X");
 
 
-                        //conversion de la direccion 05H a binarios 
+                        string addres_s = addres.Substring(0, 2);
+                        string addres_i = addres.Substring(3, 2);
+
+                        //direccion 4h
                         string channel = tx_channel.Text;
                         if (check_channel == tx_channel.Text)
                         {
@@ -671,44 +985,21 @@ namespace EBYTE_NAS
                             lb_channel.Text = "Channel ✔";
                             lb_channel.ForeColor = Color.Green;
                         }
+                        byte resultado_04H = byte.Parse(channel, System.Globalization.NumberStyles.HexNumber);
 
-
-                        //conversion de la direccion 06H a binarios 
-                        string Addres_06H = BinariosE_RSSI + Binari_fixed + Binarior_reply + Binarios_LBT + Binarios_Wtrans + Binarios_Wcycle;
-
-                        int numeroDecimal_06H = Convert.ToInt32(Addres_06H, 2);
-                        string numeroHexadecimal_06 = numeroDecimal_06H.ToString("X");
-
-
-
-
+                        //CONVERSION PARA CADENA HEXA
                         byte resultado_01 = byte.Parse(addres_s, System.Globalization.NumberStyles.HexNumber);
                         byte resultado_01_1 = byte.Parse(addres_i, System.Globalization.NumberStyles.HexNumber);
-                        byte resultado_02 = byte.Parse(net_id, System.Globalization.NumberStyles.HexNumber);
+
                         byte resultado_03 = byte.Parse(numeroHexadecimal_03, System.Globalization.NumberStyles.HexNumber);
-                        byte resultado_04H = byte.Parse(numeroHexadecimal_04, System.Globalization.NumberStyles.HexNumber);
-                        byte resultado_05H = byte.Parse(channel, System.Globalization.NumberStyles.HexNumber);
-                        byte resultado_06H = byte.Parse(numeroHexadecimal_06, System.Globalization.NumberStyles.HexNumber);
+                        byte resultado_05 = byte.Parse(numeroHexadecimal_05, System.Globalization.NumberStyles.HexNumber);
 
-
-
-                        //byte[] hexMessage = {  };
-                        byte[] hexMessage2 = { 0xC0, 0x00, 0x09, resultado_01, resultado_01_1, resultado_02, resultado_03, resultado_04H, resultado_05H, resultado_06H, 0x00, 0x00 }; //-C1-00-09-00-F8-0A-60-C0-1E-80-00-00
-                                                                                                                                                                                      // puerto.Write(hexMessage, 0, hexMessage.Length);
+                        byte[] hexMessage2 = { 0xC0, resultado_01, resultado_01_1, resultado_03, resultado_04H, resultado_05 }; //-C0-09-DD-5B-07-1D
+                                                                                                   // puerto.Write(hexMessage, 0, hexMessage.Length);
                         puerto.Write(hexMessage2, 0, hexMessage2.Length);
-                        //puerto.Write(mensaje_byte_tamaño, 0, mensaje_byte_tamaño.Length);
-                        timer_set.Start();
-
+                      
                     }
-                    else
-                    {
-                        MessageBox.Show("no hay datos");
-                    }
-                }
-                catch (Exception error)
-                {
 
-                    MessageBox.Show(error.Message);
                 }
             }
 
@@ -717,6 +1008,7 @@ namespace EBYTE_NAS
                 MessageBox.Show("Port closed", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             // timer1.Start();
+
         }
 
         private void btn_conectar_Click_1(object sender, EventArgs e)
@@ -1135,6 +1427,259 @@ namespace EBYTE_NAS
                     //06 -> channel
                     //40 -> fixed
                     // 00 00 -> addres
+
+                    // addres direccion del modulo 
+                    string addres = partes[2] + " " + partes[3];
+
+                    // int addres_0 = Convert.ToInt32(addres, 16);
+                    tx_addres.Text = Convert.ToString(addres);
+                    check_addres = tx_addres.Text; // valor de cambio para visualizacion
+
+
+                   // int channel = Convert.ToUInt16(partes[5], 16);
+                    tx_channel.Text = Convert.ToString(partes[5]);
+                    check_channel = tx_channel.Text;
+
+                    //Configuracion de la columna 3 en el manual
+                    string binary_03H = Convert.ToString(Convert.ToInt32(partes[4], 16), 2); //03H
+                    while (binary_03H.Length < 8)
+                    {
+                        binary_03H = "0" + binary_03H;
+                    }
+
+                    binary_03H = "b" + binary_03H;
+                    int delimitador;
+                    string binary_03H_baudrate = "";
+                    string binary_03H_parity = "";
+                    string binary_03H_airRate = "";
+                    
+                    try
+                    {
+                        delimitador = binary_03H.IndexOf('b');
+                        binary_03H_baudrate = binary_03H.Substring(delimitador + 3, 3);
+                        binary_03H_parity = binary_03H.Substring(delimitador + 1, 2);
+                        binary_03H_airRate = binary_03H.Substring(delimitador + 6, 3);
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+                    //configuracion para parity
+                    if (binary_03H_parity == "10")
+                    {
+                        CB_PARITY.Text = "8E1";
+                    }
+                    if (binary_03H_parity == "01")
+                    {
+                        CB_PARITY.Text = "8O1";
+                    }
+                    if (binary_03H_parity == "00")
+                    {
+                        CB_PARITY.Text = "8N1";
+                    }
+                    check_parity = CB_PARITY.Text;
+
+                    if (binary_03H_baudrate == "000")
+                    {
+                        CB_baudRate.Text = "1200";
+                    }
+                    if (binary_03H_baudrate == "001")
+                    {
+                        CB_baudRate.Text = "2400";
+                    }
+                    if (binary_03H_baudrate == "010")
+                    {
+                        CB_baudRate.Text = "4800";
+                    }
+                    if (binary_03H_baudrate == "011")
+                    {
+                        CB_baudRate.Text = "9600";
+                    }
+                    if (binary_03H_baudrate == "100")
+                    {
+                        CB_baudRate.Text = "19200";
+                    }
+                    if (binary_03H_baudrate == "101")
+                    {
+                        CB_baudRate.Text = "38400";
+                    }
+                    if (binary_03H_baudrate == "110")
+                    {
+                        CB_baudRate.Text = "57600";
+                    }
+                    if (binary_03H_baudrate == "111")
+                    {
+                        CB_baudRate.Text = "115200";
+                    }
+                    check_baud = CB_baudRate.Text;
+
+                    //configuracion para air rate
+                    if (binary_03H_airRate == "000")
+                    {
+                        cb_air_rate.Text = "0.3K";
+                    }
+                    if (binary_03H_airRate == "001")
+                    {
+                        cb_air_rate.Text = "1.2K";
+                    }
+                    if (binary_03H_airRate == "010")
+                    {
+                        cb_air_rate.Text = "2.4K";
+                    }
+                    if (binary_03H_airRate == "011")
+                    {
+                        cb_air_rate.Text = "4.8K";
+                    }
+                    if (binary_03H_airRate == "100")
+                    {
+                        cb_air_rate.Text = "9.6K";
+                    }
+                    if (binary_03H_airRate == "101")
+                    {
+                        cb_air_rate.Text = "19.2K";
+                    }
+                    if (binary_03H_airRate == "110")
+                    {
+                        cb_air_rate.Text = "38.4K";
+                    }
+                    if (binary_03H_airRate == "111")
+                    {
+                        cb_air_rate.Text = "62.5K";
+                    }
+                    check_air = cb_air_rate.Text;
+
+
+                    //Configuracion de la columna 5 en el manual
+
+                    string binary_06H = Convert.ToString(Convert.ToInt32(partes[6], 16), 2); 
+                    
+
+                    while (binary_06H.Length < 8)
+                    {
+                        binary_06H = "0" + binary_06H;
+                    }
+
+                    int delimitador_06H = binary_06H.IndexOf('b');
+
+                    /*
+                     * fixed 1
+                     * io mode 1 
+                     * wake up 3
+                     * FEC 1 
+                     * POWER 2
+                    */
+                    string binary_05H_FIXED = binary_06H.Substring(delimitador_06H + 1, 1);
+
+                    string binary_05H_IO_MODE = binary_06H.Substring(delimitador_06H + 2, 1);
+
+                    //string binary_06H_FIXED = binary_06H.Substring(delimitador_06H + 2, 1);
+
+                    string binary_05H_WAKE_UP = binary_06H.Substring(delimitador_06H + 3, 3);
+
+                    string binary_05H_FEC = binary_06H.Substring(delimitador_06H + 6, 1);
+
+                    string binary_05H_POWER = binary_06H.Substring(delimitador_06H + 7, 2);
+
+                    lb_TranMode.Text = "IO Mode";
+                    lb_WorCycle.Text = "Wor Timing";
+                    lb_WorROLE.Text = "Fixed Mode";
+                    lb_PacketSize.Text = "FEC";
+
+
+                    //FIXED MODE
+                    if (binary_05H_FIXED == "0")
+                    {
+                        cb_Wrole.Text = "Disable";
+                    }
+                    if (binary_05H_FIXED == "1")
+                    {
+                        cb_Wrole.Text = "Enable";
+                    }
+                    check_fixed = cb_Wrole.Text;
+
+                    //IO MODE
+                    if (binary_05H_IO_MODE == "0")
+                    {
+                        cb_tranMode.Text = "OpenDrain";
+                    }
+                    if (binary_05H_IO_MODE == "1")
+                    {
+                        cb_tranMode.Text = "PushPull";
+                    }
+                    check_LBT = cb_tranMode.Text;
+
+                    //WOR TIMING
+
+                    if (binary_05H_WAKE_UP == "000")
+                    {
+                        cb_Wcycle.Text = "500ms";
+                    }
+                    if (binary_05H_WAKE_UP == "001")
+                    {
+                        cb_Wcycle.Text = "1000ms";
+                    }
+                    if (binary_05H_WAKE_UP == "010")
+                    {
+                        cb_Wcycle.Text = "1500ms";
+                    }
+                    if (binary_05H_WAKE_UP == "011")
+                    {
+                        cb_Wcycle.Text = "2000ms";
+                    }
+                    if (binary_05H_WAKE_UP == "100")
+                    {
+                        cb_Wcycle.Text = "2500ms";
+                    }
+                    if (binary_05H_WAKE_UP == "101")
+                    {
+                        cb_Wcycle.Text = "3000ms";
+                    }
+                    if (binary_05H_WAKE_UP == "110")
+                    {
+                        cb_Wcycle.Text = "3500ms";
+                    }
+                    if (binary_05H_WAKE_UP == "111")
+                    {
+                        cb_Wcycle.Text = "4000ms";
+                    }
+                    check_Wcycle = cb_Wcycle.Text;
+
+                    
+
+                    //FEC
+                    if (binary_05H_FEC == "0")
+                    {
+                        cb_Psize.Text = "Disable"; //Disable
+                    }
+                    if (binary_05H_FEC == "1")
+                    {
+                        cb_Psize.Text = "Enable"; //Enable
+                    }
+                    check_Wrole = cb_Psize.Text;
+
+
+                    //configuracion power
+                    if (binary_05H_POWER == "00")
+                    {
+                        cb_power.Text = "30dBm";
+                    }
+                    if (binary_05H_POWER == "01")
+                    {
+                        cb_power.Text = "27dBm";
+                    }
+                    if (binary_05H_POWER == "10")
+                    {
+                        cb_power.Text = "24dBm";
+                    }
+                    if (binary_05H_POWER == "11")
+                    {
+                        cb_power.Text = "21dBm";
+                    }
+                    check_power = cb_power.Text;
+
+
+
 
                     timer1.Stop();
 
@@ -1944,6 +2489,39 @@ namespace EBYTE_NAS
 
         private void cb_module_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cb_module.SelectedItem == "E22")
+            {
+                tx_net_id.Show();
+                tx_key.Show();
+                pic_key.Show();
+                lb_netID.Show();
+                bunifuPanel2.Size = new Size(300, 343);
+
+                //panel de configuracion
+                cb_Prssi.Show();
+                bunifuLabel19.Show();
+                pic_Prsi.Show();
+
+                cb_Crssi.Show();
+                lb_rssi.Show();
+                pic_Crsi.Show();
+
+                lb_LBT.Show();
+                cb_lbt.Show();
+                pic_LBT.Show();
+
+                cb_relay.Show();
+                pic_Relay.Show();
+                lb_relay.Show();
+
+                lb_TranMode.Text = "Tran Mode";
+                lb_WorCycle.Text = "Wor Cycle";
+                lb_WorROLE.Text = "Wor Role";
+                lb_PacketSize.Text = "Packet Size";
+
+                bunifuLabel6.Location = new Point(14, 800);
+            }
+            
             if (cb_module.SelectedItem == "E32")
             {
                 tx_net_id.Hide();
@@ -1978,17 +2556,38 @@ namespace EBYTE_NAS
 
                 bunifuLabel6.Location = new Point(14, 540);
 
+                List<string> nuevosItems = new List<string>
+                    {
+                        "Disable",
+                        "Enable"
+                    };
 
+                // Asignar la lista de elementos al ComboBox
+                cb_Psize.Items.Clear(); // Limpiar los elementos existentes (opcional)
+                cb_Psize.Items.AddRange(nuevosItems.ToArray());
 
+                List<string> Items_Wrole = new List<string>
+                    {
+                        "Disable",
+                        "Enable"
+                    };
 
+                // Asignar la lista de elementos al ComboBox
+                cb_Wrole.Items.Clear(); 
+                cb_Wrole.Items.AddRange(Items_Wrole.ToArray());
+
+                List<string> Items_IOMode = new List<string>
+                    {
+                        "OpenDrain",
+                        "PushPull"
+                    };
+
+                // Asignar la lista de elementos al ComboBox
+                cb_tranMode.Items.Clear(); // Limpiar los elementos existentes 
+                cb_tranMode.Items.AddRange(Items_IOMode.ToArray());
 
             }
         }
-
-        private void pictureBox2_Click_3(object sender, EventArgs e)
-        {
-            
-            }
 
         private void cb_puertos_DropDown_1(object sender, EventArgs e)
         {

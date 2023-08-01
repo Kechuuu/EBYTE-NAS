@@ -32,6 +32,7 @@ namespace EBYTE_NAS
             tx_key.PlaceholderText = "Enter HEX format 0 - FF FF";
             btn_conectar.Image = global::EBYTE_NAS.Properties.Resources.port_close;
             puerto.DataReceived += Puerto_DataReceived;
+            
 
         }
 
@@ -76,7 +77,7 @@ namespace EBYTE_NAS
         }
 
         IFirebaseClient client;
-            int paro = 1;
+        int paro = 1;
         private void Conexion()
         {
             IFirebaseConfig config = new FirebaseConfig
@@ -87,14 +88,19 @@ namespace EBYTE_NAS
             };
             client = new FireSharp.FirebaseClient(config);
         }
-        
+
 
         private void pictureBox2_Click_3(object sender, EventArgs e)
         {
-            
+
         }
+        private bool eliminar;
+        public bool Eliminar { get => eliminar; set => eliminar = value; }
+        private string Linea_clear; //variable para limpiar la linea desde la tabla
+        string nodoAEliminar; //variable de nodo para eliminar
         private void pictureBox5_Click(object sender, EventArgs e)
         {
+            
             IFirebaseConfig config = new FirebaseConfig
             {
                 AuthSecret = "bMGJw8A2tp0MCkH5mcKWCe90QsX5OKq3qVHWwsEv",
@@ -105,17 +111,26 @@ namespace EBYTE_NAS
 
             if (client != null)
             {
-                MessageBox.Show("Conexión exitosa a Firebase Realtime Database");
+              //  MessageBox.Show("Conexión exitosa a Firebase Realtime Database");
 
                 // La ruta del nodo que deseas eliminar (por ejemplo, "usuarios/nodo_a_eliminar")
-                string nodoAEliminar = TB_MAC_ID.Text;
+
+                if (eliminar == false)
+                {
+                    nodoAEliminar = TB_MAC_ID.Text;
+                }
+                else
+                {
+                    nodoAEliminar = Linea_clear;
+                    Eliminar = false;
+                }
 
                 // Realizar la operación de eliminación en la base de datos
                 FirebaseResponse response = client.Delete("Mac_address/" + nodoAEliminar);
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    MessageBox.Show("Nodo eliminado correctamente");
+                    MessageBox.Show("Nodo eliminado correctamente " + "*** " + nodoAEliminar + " ***");
                 }
                 else
                 {
@@ -127,7 +142,7 @@ namespace EBYTE_NAS
                 MessageBox.Show("Error al conectar a Firebase Realtime Database");
             }
         }
-        
+
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             IFirebaseConfig config = new FirebaseConfig
@@ -141,53 +156,51 @@ namespace EBYTE_NAS
             try
             {
 
-            
-            if (client != null)
-            {
-               
 
-                // Obtener el ID que deseas agregar
-                string id = TB_MAC_ID.Text;
-
-                // Verificar si el ID ya existe en la base de datos
-                FirebaseResponse checkResponse = client.Get("Mac_address/" + id);
-                if (checkResponse.Body != "null")
+                if (client != null)
                 {
-                    MessageBox.Show("El ID ya existe en la base de datos. No se puede agregar.");
-                    return;
-                }
+                    // Obtener el ID que deseas agregar
+                    string id = TB_MAC_ID.Text;
 
-                // Si el ID no existe, entonces procedemos a agregar el nuevo nodo
-                DateTime fechaActual = DateTime.Now;
-                string fechaFormateada = fechaActual.ToString("g");
+                    // Verificar si el ID ya existe en la base de datos
+                    FirebaseResponse checkResponse = client.Get("Mac_address/" + id);
+                    if (checkResponse.Body != "null")
+                    {
+                        MessageBox.Show("El ID ya existe en la base de datos. No se puede agregar.");
+                        return;
+                    }
 
-                // Datos que deseas agregar al nuevo nodo
-                var data = new
-                {
-                    ID = id,
-                    FECHA = fechaFormateada,
-                    Type = lb_module_type.Text
-                };
+                    // Si el ID no existe, entonces procedemos a agregar el nuevo nodo
+                    DateTime fechaActual = DateTime.Now;
+                    string fechaFormateada = fechaActual.ToString("g");
 
-                // La ruta donde se agregará el nuevo nodo (por ejemplo, "Mac_address/nuevo_nodo")
-                string nuevaRuta = "Mac_address/" + id;
+                    // Datos que deseas agregar al nuevo nodo
+                    var data = new
+                    {
+                        ID = id,
+                        FECHA = fechaFormateada,
+                        Type = lb_module_type.Text
+                    };
 
-                // Realizar la operación de escritura en la base de datos
-                SetResponse response = client.Set(nuevaRuta, data);
+                    // La ruta donde se agregará el nuevo nodo (por ejemplo, "Mac_address/nuevo_nodo")
+                    string nuevaRuta = "Mac_address/" + id;
 
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    MessageBox.Show("Nuevo nodo agregado correctamente");
+                    // Realizar la operación de escritura en la base de datos
+                    SetResponse response = client.Set(nuevaRuta, data);
+
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        MessageBox.Show("Nuevo nodo agregado correctamente");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al agregar el nuevo nodo");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Error al agregar el nuevo nodo");
+                    MessageBox.Show("Error al conectar a Firebase Realtime Database");
                 }
-            }
-            else
-            {
-                MessageBox.Show("Error al conectar a Firebase Realtime Database");
-            }
             }
             catch (Exception)
             {
@@ -209,11 +222,9 @@ namespace EBYTE_NAS
             puerto.Read(buffer, 0, bytesToRead);
 
             // MessageBox.Show("Mensaje recibido: " + BitConverter.ToString(buffer));
-            
+
             terminalLb.Text += "-" + BitConverter.ToString(buffer);
             terminalLb.Text = terminalLb.Text.Replace("--", "-");
-
-            
 
 
         }
@@ -364,10 +375,10 @@ namespace EBYTE_NAS
                 terminalLb.Text = "";
                 if (puerto.IsOpen)
                 {
-                   
+
                     timer_module.Start();
                     byte[] get = { 0x41, 0x54, 0x2B, 0x44, 0x45, 0x56, 0x54, 0x59, 0x50, 0x45, 0x3D, 0x3F };
-                    puerto.Write(get,0,get.Length);
+                    puerto.Write(get, 0, get.Length);
                     //timer_module.Start();
                     //get   
                 }
@@ -375,9 +386,9 @@ namespace EBYTE_NAS
                 {
                     MessageBox.Show("Port closed", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                
+
             }
-            }
+        }
         public static byte[] ConvertHexStringToByteArray(string hexString)
         {
 
@@ -1378,7 +1389,7 @@ namespace EBYTE_NAS
 
                             //byte[] hexMessage = {  };
                             byte[] hexMessage2 = { 0xC0, 0x00, 0x08, resultado_01, resultado_01_1, resultado_03, resultado_04H, resultado_05H, resultado_06H, 0x00, 0x00 }; //-C1-00-09-00-F8-0A-60-C0-1E-80-00-00
-                                                                                                                                                                                          // puerto.Write(hexMessage, 0, hexMessage.Length);
+                                                                                                                                                                            // puerto.Write(hexMessage, 0, hexMessage.Length);
                             puerto.Write(hexMessage2, 0, hexMessage2.Length);
                             //puerto.Write(mensaje_byte_tamaño, 0, mensaje_byte_tamaño.Length);
                             timer_set.Start();
@@ -1549,7 +1560,7 @@ namespace EBYTE_NAS
 
                         //DIRECCION 06H 
                         string Binarios_fixed = "";
-                        string Binario_ioMode= "";
+                        string Binario_ioMode = "";
                         string Binarios_WakeUp = "";
                         string Binarios_FEC = "";
                         string Binarios_Power = "";
@@ -1640,7 +1651,7 @@ namespace EBYTE_NAS
                         }
                         check_power = cb_power.Text;
 
-                        string Addres_03H =  Binarioparity+ Binariosbaud  + BinariosAIR;
+                        string Addres_03H = Binarioparity + Binariosbaud + BinariosAIR;
                         int numeroDecimal = Convert.ToInt32(Addres_03H, 2);
                         string numeroHexadecimal_03 = numeroDecimal.ToString("X");
 
@@ -1674,9 +1685,9 @@ namespace EBYTE_NAS
                         byte resultado_05 = byte.Parse(numeroHexadecimal_05, System.Globalization.NumberStyles.HexNumber);
 
                         byte[] hexMessage2 = { 0xC0, resultado_01, resultado_01_1, resultado_03, resultado_04H, resultado_05 }; //-C0-09-DD-5B-07-1D
-                                                                                                   // puerto.Write(hexMessage, 0, hexMessage.Length);
+                                                                                                                                // puerto.Write(hexMessage, 0, hexMessage.Length);
                         puerto.Write(hexMessage2, 0, hexMessage2.Length);
-                      
+
                     }
 
                 }
@@ -1770,7 +1781,7 @@ namespace EBYTE_NAS
 
         private void timer1_Tick(object sender, EventArgs e) // extra el mensaje (hexa del ebyte) y lo almacena visualmente en los tx box
         {
-            if (cb_module.SelectedItem == "E22" )
+            if (cb_module.SelectedItem == "E22")
             {
                 String mensaje = terminalLb.Text;
                 if (mensaje.Contains("C1") && mensaje.Length > 10)
@@ -1794,7 +1805,7 @@ namespace EBYTE_NAS
 
                     //comienzo de la configuracion de lectura en addres 03H
                     string binary_03H = Convert.ToString(Convert.ToInt32(partes[7], 16), 2); //03H
-                    
+
                     while (binary_03H.Length < 8)
                     {
                         binary_03H = "0" + binary_03H;
@@ -2109,7 +2120,7 @@ namespace EBYTE_NAS
                     // addres direccion del modulo 
                     string addres = partes[4] + " " + partes[5];
 
-                    
+
 
                     // int addres_0 = Convert.ToInt32(addres, 16);
                     tx_addres.Text = Convert.ToString(addres);
@@ -2118,7 +2129,7 @@ namespace EBYTE_NAS
 
                     //comienzo de la configuracion de lectura en addres 03H
                     string binary_03H = Convert.ToString(Convert.ToInt32(partes[6], 16), 2); //03H
-                   
+
                     while (binary_03H.Length < 8)
                     {
                         binary_03H = "0" + binary_03H;
@@ -2298,7 +2309,7 @@ namespace EBYTE_NAS
                     check_air = cb_air_rate.Text;
 
                     //channel Canal 05H
-                   // int channel = Convert.ToUInt16(partes[8], 16);
+                    // int channel = Convert.ToUInt16(partes[8], 16);
                     tx_channel.Text = partes[8];
 
                     check_channel = tx_channel.Text;
@@ -2445,7 +2456,7 @@ namespace EBYTE_NAS
                     check_addres = tx_addres.Text; // valor de cambio para visualizacion
 
 
-                   // int channel = Convert.ToUInt16(partes[5], 16);
+                    // int channel = Convert.ToUInt16(partes[5], 16);
                     tx_channel.Text = Convert.ToString(partes[5]);
                     check_channel = tx_channel.Text;
 
@@ -2461,7 +2472,7 @@ namespace EBYTE_NAS
                     string binary_03H_baudrate = "";
                     string binary_03H_parity = "";
                     string binary_03H_airRate = "";
-                    
+
                     try
                     {
                         delimitador = binary_03H.IndexOf('b');
@@ -2561,8 +2572,8 @@ namespace EBYTE_NAS
 
                     //Configuracion de la columna 5 en el manual
 
-                    string binary_06H = Convert.ToString(Convert.ToInt32(partes[6], 16), 2); 
-                    
+                    string binary_06H = Convert.ToString(Convert.ToInt32(partes[6], 16), 2);
+
 
                     while (binary_06H.Length < 8)
                     {
@@ -2654,7 +2665,7 @@ namespace EBYTE_NAS
                     }
                     check_Wcycle = cb_Wcycle.Text;
 
-                    
+
 
                     //FEC
                     if (binary_05H_FEC == "0")
@@ -2693,10 +2704,10 @@ namespace EBYTE_NAS
                     timer_get_info.Stop();
 
                 }
-            } 
-                    
-            
-        timer_get_info.Stop();
+            }
+
+
+            timer_get_info.Stop();
         }
 
         private void tx_addres_KeyPress(object sender, KeyPressEventArgs e)
@@ -3044,7 +3055,7 @@ namespace EBYTE_NAS
                                 {
                                     input = 1; // Terminar el bucle si no se encuentra la mac_2
                                     TB_MAC_ID.Text = mac + mac_2;
-                                    MessageBox.Show("sali");
+                                   // MessageBox.Show("sali");
                                     // Si el ID no existe, entonces procedemos a agregar el nuevo nodo
                                     DateTime fechaActual = DateTime.Now;
                                     string fechaFormateada = fechaActual.ToString("g");
@@ -3103,7 +3114,7 @@ namespace EBYTE_NAS
 
             if (puerto.IsOpen)
             {
-               
+
 
                 byte[] ni_start = { 0x25, 0x4E, 0x49, 0x3D };
                 byte[] node_id = Encoding.UTF8.GetBytes(tx_NI.Text);
@@ -3144,7 +3155,7 @@ namespace EBYTE_NAS
 
                 string[] Frame = frame_0.Split(',');
 
-                
+
 
                 if (lb_mac_id.Text == "MAC ID ✔")
                 {
@@ -3157,11 +3168,11 @@ namespace EBYTE_NAS
                 {
                     MessageBox.Show("Mac ID diferente de 8 bytes");
                 }
-                
+
             }
             else
             {
-                MessageBox.Show("Port closed","Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Port closed", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         string checj_addres_set;
@@ -3370,7 +3381,7 @@ namespace EBYTE_NAS
                     check_air = cb_air_rate.Text;
 
                     //channel Canal 05H
-                  //  int channel = Convert.ToUInt16(partes[9], 16);
+                    //  int channel = Convert.ToUInt16(partes[9], 16);
                     tx_channel.Text = partes[9];
                     check_channel = tx_channel.Text;
 
@@ -3502,8 +3513,8 @@ namespace EBYTE_NAS
 
         private void pictureBox2_Click_1(object sender, EventArgs e)
         {
-            
-           
+
+
         }
 
         private void bunifuLabel4_Click(object sender, EventArgs e)
@@ -3513,20 +3524,20 @@ namespace EBYTE_NAS
 
         private void timer2_get_Tick(object sender, EventArgs e) //envia el mensaje para obtener la caracteristicas del modulo 
         {
-                
+
             terminalLb.Text = "";
-                timer2_get.Stop();
-                if (puerto.IsOpen)
-                {
-                    byte[] hexMessage = { 0xC1, 0x00, 0x09 };
-                    puerto.Write(hexMessage, 0, hexMessage.Length);
-                }
-                else
-                {
-                    MessageBox.Show("Port closed", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                
-                timer_get_info.Start();
+            timer2_get.Stop();
+            if (puerto.IsOpen)
+            {
+                byte[] hexMessage = { 0xC1, 0x00, 0x09 };
+                puerto.Write(hexMessage, 0, hexMessage.Length);
+            }
+            else
+            {
+                MessageBox.Show("Port closed", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            timer_get_info.Start();
         }
 
         private void timer_module_Tick(object sender, EventArgs e) //timer.- es utilizado para verificar el tipo del modulo (obtiene el nombre del modulo)
@@ -3558,7 +3569,7 @@ namespace EBYTE_NAS
             }
             if (cb_module.SelectedItem == "E32")
             {
-                
+
                 if (terminalLb.Text.Length >= 21)
                 {
                     string hex = terminalLb.Text;
@@ -3684,7 +3695,7 @@ namespace EBYTE_NAS
                 cb_Psize.Items.Clear(); // Limpiar los elementos existentes (opcional)
                 cb_Psize.Items.AddRange(nuevosItems.ToArray());
 
-                 List<string> Items_Wrole = new List<string>
+                List<string> Items_Wrole = new List<string>
                     {
                         "Recieve",
                         "Translate"
@@ -3696,10 +3707,10 @@ namespace EBYTE_NAS
             }
             if (cb_module.SelectedItem == "E220")
             {
-                
+
                 tx_key.Show();
                 pic_key.Show();
-                
+
 
                 //panel de configuracion
                 cb_Prssi.Show();
@@ -3745,7 +3756,7 @@ namespace EBYTE_NAS
 
                 List<string> nuevosItems = new List<string>
                     {
-                        "32 bytes", 
+                        "32 bytes",
                         "64 bytes",
                         "128 bytes",
                         "240 bytes"
@@ -3819,7 +3830,7 @@ namespace EBYTE_NAS
                     };
 
                 // Asignar la lista de elementos al ComboBox
-                cb_Wrole.Items.Clear(); 
+                cb_Wrole.Items.Clear();
                 cb_Wrole.Items.AddRange(Items_Wrole.ToArray());
 
                 List<string> Items_IOMode = new List<string>
@@ -3843,7 +3854,190 @@ namespace EBYTE_NAS
                 cb_puertos.Text = "Closed";
                 btn_conectar.Image = global::EBYTE_NAS.Properties.Resources.port_close;
             }
+
+        }
+        Fire_base fireBaseForm = new Fire_base();
+        public event EventHandler PictureBoxClickEvent;
+       
+        private bool activate_table;
+
+        public bool Activate_table { get => activate_table; set => activate_table = value; }
+        public string Linea_clear1 { get => Linea_clear; set => Linea_clear = value; }
+        public bool Update_table { get => update_table; set => update_table = value; }
+        public bool Table_closed1 { get => Table_closed; set => Table_closed = value; }
+        public int Force_form { get => force_form; set => force_form = value; }
+
+        bool Actualizar;
+        private void timer_catchTable_Tick(object sender, EventArgs e)
+        {
             
+            if (update_table == true)
+            {
+                update_table = false;
+                try
+                {
+                    Conexion();
+                    if (client != null)
+                    {
+                        FirebaseResponse response = client.Get("Mac_address");
+                        if (response.Body != "null")
+                        {
+                            fireBaseForm.MacID1 = response.Body;
+                           // MessageBox.Show("enviado");
+                            
+                        }
+                    }
+                }
+                catch (FireSharp.Exceptions.FirebaseException ex)
+                {
+                    // Manejar el error específico de Firebase
+                    MessageBox.Show("Error de Firebase: " + ex.Message);
+                }
+                
+            }
+        }
+        private bool update_table;
+        private bool Table_closed;
+        
+        private int force_form = 0;
+
+        public void Show_table()
+        {
+            try
+            {
+
+                // fireBaseForm.Close();
+                Conexion();
+                // Verificar si la conexión fue exitosa
+                if (client != null)
+                {
+                    FirebaseResponse response = client.Get("Mac_address");
+
+                    // Verificar si el nodo existe y tiene datos
+                    if (response.Body != "null")
+                    {
+
+                        //FireBase.MacID1 = response.Body;
+
+                        // Verificar si el formulario ya está creado y mostrarlo o crear una nueva instancia
+                        fireBaseForm.MacID1 = response.Body;
+
+                        if (fireBaseForm != null && !fireBaseForm.IsDisposed)
+                        {
+                            //fireBaseForm.Show();
+                            //MessageBox.Show("1");
+                        }
+                        if (fireBaseForm.IsDisposed)
+                        {
+                            fireBaseForm = new Fire_base();
+                            fireBaseForm.MacID1 = response.Body;
+                            //fireBaseForm.Show();
+                            //MessageBox.Show("2");
+                            if (!fireBaseForm.Visible)
+                            {
+                                fireBaseForm.Show(); // Mostrar el formulario si está oculto.
+                            }
+                        }
+
+                        else
+                        {
+                            // Actualizar = false;
+                            //fireBaseForm.MacID1 = response.Body;
+                            /*
+                                Fire_base fireBaseForm = new Fire_base();
+                                fireBaseForm.MacID1 = response.Body;
+                                fireBaseForm.Show();
+                            */
+                        }
+
+                    }
+                }
+            }
+            catch (FireSharp.Exceptions.FirebaseException ex)
+            {
+                // Manejar el error específico de Firebase
+                MessageBox.Show("Error de Firebase: " + ex.Message);
+
+            }
+        }
+        public void btn_Show_table_Click(object sender, EventArgs table)
+        {
+
+            try
+            {
+
+                // fireBaseForm.Close();
+                Conexion();
+                // Verificar si la conexión fue exitosa
+                if (client != null)
+                {
+                    FirebaseResponse response = client.Get("Mac_address");
+
+                    // Verificar si el nodo existe y tiene datos
+                    if (response.Body != "null")
+                    {
+
+                        //FireBase.MacID1 = response.Body;
+
+                        // Verificar si el formulario ya está creado y mostrarlo o crear una nueva instancia
+                        fireBaseForm.MacID1 = response.Body;
+
+                        if (fireBaseForm != null && !fireBaseForm.IsDisposed)
+                        {
+                            fireBaseForm.Show();
+                            //MessageBox.Show("1");
+                        }
+                        if (fireBaseForm.IsDisposed)
+                        {
+                            fireBaseForm = new Fire_base();
+                            fireBaseForm.MacID1 = response.Body;
+                            //fireBaseForm.Show();
+                            //MessageBox.Show("2");
+                            if (!fireBaseForm.Visible)
+                            {
+                                fireBaseForm.Show(); // Mostrar el formulario si está oculto.
+                            }
+                        }
+
+                        else
+                        {
+                            // Actualizar = false;
+                            //fireBaseForm.MacID1 = response.Body;
+                            /*
+                                Fire_base fireBaseForm = new Fire_base();
+                                fireBaseForm.MacID1 = response.Body;
+                                fireBaseForm.Show();
+                            */
+                        }
+
+                    }
+                }
+            }
+            catch (FireSharp.Exceptions.FirebaseException ex)
+            {
+                // Manejar el error específico de Firebase
+                MessageBox.Show("Error de Firebase: " + ex.Message);
+
+            }
+        }
+
+        private void timer_eliminar_Ltable_Tick(object sender, EventArgs e)
+        {
+            timer_eliminar_Ltable.Stop();
+            if (Eliminar == true)
+            {
+                pictureBox5_Click(btn_clear_table, EventArgs.Empty);
+            }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click_4(object sender, EventArgs e)
+        {
+
         }
 
         private void cb_puertos_DropDown_1(object sender, EventArgs e)

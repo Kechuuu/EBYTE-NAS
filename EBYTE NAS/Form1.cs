@@ -10,9 +10,10 @@ using System.Collections.Generic;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
-using System.Data;
-
-
+using System.Net;
+using System.Diagnostics;
+using System.IO.Compression;
+using System.IO;
 
 
 namespace EBYTE_NAS
@@ -25,7 +26,7 @@ namespace EBYTE_NAS
         {
             InitializeComponent();
             puerto = new SerialPort();
-            cb_module.Text = "E220";
+            //cb_module.Text = "E220";
             tx_addres.PlaceholderText = "Enter HEX format 0 - FF FF";
             tx_channel.PlaceholderText = "Enter HEX format 0 - 50";
             tx_net_id.PlaceholderText = "Enter HEX format 0 - FF FF";
@@ -35,9 +36,114 @@ namespace EBYTE_NAS
             
 
         }
+        
+        private void CheckVersion()
+        {
+
+            string new_Version = "1.0.1";
+            String My_Version = "1.0.1";
+            Conexion();
+            // Verificar si la conexión fue exitosa
+            if (client != null)
+            {
+                try
+                {
+                    FirebaseResponse response = client.Get("Version/New_version");
+
+                    // Verificar si el nodo existe y tiene datos
+                    if (response.Body != "null")
+                    {
+                        //  MessageBox.Show(response.Body);
+                        new_Version = response.Body.Replace("\"", "");
+
+                        if (My_Version != new_Version) //compara versiones para ver si hay una version nueva disponible
+                        {
+                            DialogResult result = MessageBox.Show("Nueva Actualizacion disponible ¿deseas descargar nueva version?", "Elegir Opción", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                            if (result == DialogResult.Yes)
+                            {
+                                
+                                
+                                string link = "https://cdn.glitch.me/bca95e37-ff12-44c9-92a8-19fd3a3b892d/V2.0_Setup%20xbee_LoRa.zip?v=1691425217484";
+
+                                try
+                                {
+                                    Process.Start(new ProcessStartInfo
+                                    {
+                                        FileName = link,
+                                        UseShellExecute = true
+                                    });
+                                    File.Delete(@".\V2.0_Setup xbee_LoRa (3)");
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Error al abrir el enlace: " + ex.Message);
+                                }
+                            }
+                            else if (result == DialogResult.No)
+                            {
+                                MessageBox.Show("Version actual " + My_Version);
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cuentas con la version mas actualizada");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No hay datos en el nodo especificado");
+                    }
+                }
+                catch (FireSharp.Exceptions.FirebaseException ex)
+                {
+                    // Manejar el error específico de Firebase
+                    MessageBox.Show("Error de Firebase: " + ex.Message);
+
+                }
+            }
+        }
 
         DateTime fechaActual;
         Fire_base FireBase = new Fire_base(); // llamando a la tabla del segundo formulario
+
+        IFirebaseClient client; //llamado a client de database
+        int paro = 1;
+
+        //variables de transferencias entre formularios
+        private bool eliminar;
+        public bool Eliminar { get => eliminar; set => eliminar = value; }
+        private string Linea_clear; //variable para limpiar la linea desde la tabla
+        string nodoAEliminar; //variable de nodo para eliminar
+        private bool activate_table;
+        public bool Update_table { get => update_table; set => update_table = value; }
+        bool Actualizar;
+
+        //variables encargadas de verificar en envio de datos
+        String check_addres;
+        String check_channel;
+        String check_net_id;
+        String check_Key;
+        String check_baud;
+        String check_parity;
+        String check_air;
+        String check_Psize;
+        String check_Wrole;
+        String check_Wcycle;
+        String check_power;
+        String check_RSSI;
+        String check_crssi;
+        String check_fixed;
+        String check_relay;
+        String check_LBT;
+        String check_WControl;
+
+
+        int m, mx, my; //variables de movimiento del forms
+
+
+
 
         private string IncrementarMacString(string mac)
         {
@@ -76,8 +182,7 @@ namespace EBYTE_NAS
             return $"{byte1:X2} {byte2:X2} {byte3:X2}";
         }
 
-        IFirebaseClient client;
-        int paro = 1;
+        
         private void Conexion()
         {
             IFirebaseConfig config = new FirebaseConfig
@@ -94,10 +199,7 @@ namespace EBYTE_NAS
         {
 
         }
-        private bool eliminar;
-        public bool Eliminar { get => eliminar; set => eliminar = value; }
-        private string Linea_clear; //variable para limpiar la linea desde la tabla
-        string nodoAEliminar; //variable de nodo para eliminar
+       
         private void pictureBox5_Click(object sender, EventArgs e)
         {
             
@@ -228,7 +330,6 @@ namespace EBYTE_NAS
 
 
         }
-        int m, mx, my;
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
@@ -1720,6 +1821,17 @@ namespace EBYTE_NAS
                             btn_conectar.Image = global::EBYTE_NAS.Properties.Resources.port_open;
                             puerto_Conectado = true;
                             timer_detect_port.Start();
+                            if (cb_module.SelectedItem=="" || cb_module.SelectedItem == null)
+                            {
+
+                                MessageBox.Show("Selecciona un modulo para configurar ");
+                            }
+                            else
+                            {
+                                puerto.WriteLine("@AT+CONF=" + cb_module.SelectedItem + "@");
+                                MessageBox.Show("@AT+CONF=" + cb_module.SelectedItem + "@");
+                            }
+                           
                         }
                         else
                         {
@@ -1759,25 +1871,8 @@ namespace EBYTE_NAS
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            timer_checkVersion.Start();
         }
-        String check_addres;
-        String check_channel;
-        String check_net_id;
-        String check_Key;
-        String check_baud;
-        String check_parity;
-        String check_air;
-        String check_Psize;
-        String check_Wrole;
-        String check_Wcycle;
-        String check_power;
-        String check_RSSI;
-        String check_crssi;
-        String check_fixed;
-        String check_relay;
-        String check_LBT;
-        String check_WControl;
 
         private void timer1_Tick(object sender, EventArgs e) // extra el mensaje (hexa del ebyte) y lo almacena visualmente en los tx box
         {
@@ -3145,19 +3240,15 @@ namespace EBYTE_NAS
 
                 //este byte es el que lleva toda la informacion concatenada
                 byte[] mensaje_byte_tamaño = tamaño_mensaje_byte.Concat(ni_start).Concat(node_id).Concat(mac_start).Concat(mac).Concat(final).Concat(checksumByte).ToArray();
+                
                 string mensaje_byte_tamaño_string = BitConverter.ToString(mensaje_byte_tamaño).Replace("-", " ");
-
-
-
                 string frame_0 = mensaje_byte_tamaño_string.Replace("2C", ",2C");
 
                 //tx_NI.Text = "";
 
                 string[] Frame = frame_0.Split(',');
 
-
-
-                if (lb_mac_id.Text == "MAC ID ✔")
+                if (lb_mac_id.Text == "MAC ID ✔" || TB_MAC_ID.Text.Length == 23)
                 {
                     maclb.Text = Frame[0];
                     lb_frame_1.Text = Frame[1];
@@ -3166,13 +3257,14 @@ namespace EBYTE_NAS
                 }
                 else
                 {
-                    MessageBox.Show("Mac ID diferente de 8 bytes");
+                    MessageBox.Show("Mac ID diferente de 8 bytes" + TB_MAC_ID.Text.Length.ToString());
                 }
 
             }
             else
             {
                 MessageBox.Show("Port closed", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               
             }
         }
         string checj_addres_set;
@@ -3504,6 +3596,7 @@ namespace EBYTE_NAS
                 }
                 timer_set.Stop();
             }
+        
         }
 
         private void CB_baudRate_SelectedIndexChanged(object sender, EventArgs e)
@@ -3629,13 +3722,15 @@ namespace EBYTE_NAS
 
         }
 
-        private void pictureBox2_Click_2(object sender, EventArgs e)
-        {
-
-        }
 
         private void cb_module_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (puerto.IsOpen)
+            {
+                puerto.WriteLine("@AT+CONF=" + cb_module.SelectedItem + "@");
+                MessageBox.Show("@AT+CONF=" + cb_module.SelectedItem + "@");
+            }
+            
             if (cb_module.SelectedItem == "E22")
             {
                 tx_net_id.Show();
@@ -3778,7 +3873,6 @@ namespace EBYTE_NAS
 
 
             }
-
             if (cb_module.SelectedItem == "E32")
             {
                 tx_net_id.Hide();
@@ -3859,15 +3953,7 @@ namespace EBYTE_NAS
         Fire_base fireBaseForm = new Fire_base();
         public event EventHandler PictureBoxClickEvent;
        
-        private bool activate_table;
-
-        public bool Activate_table { get => activate_table; set => activate_table = value; }
-        public string Linea_clear1 { get => Linea_clear; set => Linea_clear = value; }
-        public bool Update_table { get => update_table; set => update_table = value; }
-        public bool Table_closed1 { get => Table_closed; set => Table_closed = value; }
-        public int Force_form { get => force_form; set => force_form = value; }
-
-        bool Actualizar;
+        
         private void timer_catchTable_Tick(object sender, EventArgs e)
         {
             
@@ -3938,18 +4024,6 @@ namespace EBYTE_NAS
                                 fireBaseForm.Show(); // Mostrar el formulario si está oculto.
                             }
                         }
-
-                        else
-                        {
-                            // Actualizar = false;
-                            //fireBaseForm.MacID1 = response.Body;
-                            /*
-                                Fire_base fireBaseForm = new Fire_base();
-                                fireBaseForm.MacID1 = response.Body;
-                                fireBaseForm.Show();
-                            */
-                        }
-
                     }
                 }
             }
@@ -4030,16 +4104,6 @@ namespace EBYTE_NAS
             }
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click_4(object sender, EventArgs e)
-        {
-
-        }
-
         private void cb_puertos_DropDown_1(object sender, EventArgs e)
         {
             cb_puertos.Items.Clear();
@@ -4050,19 +4114,112 @@ namespace EBYTE_NAS
             }
         }
 
+        private void pictureBox2_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
+        private void pictureBox2_Click_4(object sender, EventArgs e)
+        {
+            string new_Version = "1.0.0";
+            Conexion();
+            // Verificar si la conexión fue exitosa
+            if (client != null)
+            {
+                try
+                {
+                    FirebaseResponse response = client.Get("Version/New_version");
+
+                    // Verificar si el nodo existe y tiene datos
+                    if (response.Body != "null")
+                    {
+                      //  MessageBox.Show(response.Body);
+                        new_Version = response.Body.Replace("\"", "");
+
+
+                        String My_Version = "1.0.0";
+                        MessageBox.Show(My_Version + " " + new_Version);
+                        if (My_Version != new_Version)
+                        {
+                            DialogResult result = MessageBox.Show("Nueva Actualizacion disponible ¿deseas descargar nueva version?", "Elegir Opción", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                            if (result == DialogResult.Yes)
+                            {
+                                string link = "https://cdn.glitch.me/bca95e37-ff12-44c9-92a8-19fd3a3b892d/V2.0_Setup%20xbee_LoRa.zip?v=1691425217484";
+
+                                try
+                                {
+                                    Process.Start(new ProcessStartInfo
+                                    {
+                                        FileName = link,
+                                        UseShellExecute = true
+                                    });
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Error al abrir el enlace: " + ex.Message);
+                                }
+                            }
+                            else if (result == DialogResult.No)
+                            {
+                                MessageBox.Show("sigue con tu vida");
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cuentas con la version mas actualizada");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No hay datos en el nodo especificado");
+                    }
+                }
+                catch (FireSharp.Exceptions.FirebaseException ex)
+                {
+                    // Manejar el error específico de Firebase
+                    MessageBox.Show("Error de Firebase: " + ex.Message);
+
+                } }
+          
+            
+            
+           
+        }
+
+        private void timer_checkVersion_Tick(object sender, EventArgs e)
+        {
+            timer_checkVersion.Stop();
+            CheckVersion();
+        }
+
+        private void pictureBox2_Click_5(object sender, EventArgs e)
+        {
+            string filePath = @"C:\Users\Jesus Armando\Downloads\hola"; // Ruta completa del archivo
+
+            try
+            {
+                File.OpenRead(filePath);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private bool IsHexDigit(char c)
         {
             return (c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f'); //evaluates hexa characters
         }
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
 
+        }
 
     }
-    class counter
-    {
-        public double cnt { get; set; }
-    }
-    class variable
-    {
-        public double cnt { get; set; }
-    }
+   
 }

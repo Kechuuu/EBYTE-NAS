@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
-using Newtonsoft.Json;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using FireSharp.Config;
@@ -56,13 +52,26 @@ namespace EBYTE_NAS
             Dictionary<string, JObject> data = JsonConvert.DeserializeObject<Dictionary<string, JObject>>(Json_data);
             UpdateDataGridView(data);
         }
+        private DateTime ParseDateTime(string dateString)
+        {
+            DateTime result;
+            if (DateTime.TryParse(dateString, out result))
+            {
+                return result;
+            }
+            else
+            {
+                // Manejar el caso en el que la conversión falla
+                return DateTime.MinValue; // O cualquier otro valor predeterminado
+            }
+        }
         public void UpdateDataGridView(Dictionary<string, JObject> data)
         {
-            // Convertir el Dictionary a una lista de objetos para trabajar más fácilmente con LINQ
+            // Convertir el Dictionary a una lista de objetos para trabajar más fácilmente con LINQ 
             var dataList = data.Select(item => new
             {
                 ID = item.Key,
-                Fecha = Convert.ToDateTime(item.Value["FECHA"].ToString()),
+                Fecha = ParseDateTime(item.Value["FECHA"].ToString()),
                 Type = item.Value["Type"].ToString()
             }).ToList();
 

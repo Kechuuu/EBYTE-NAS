@@ -31,42 +31,46 @@ namespace EBYTE_NAS
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties13 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties14 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties15 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties16 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties17 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties18 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties19 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties20 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties21 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties22 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties23 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties24 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties25 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties26 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties27 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties28 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties29 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties30 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties31 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties32 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties33 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties34 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties35 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties36 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties81 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties82 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties83 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties84 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties85 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties86 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties87 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties88 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties89 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties90 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties91 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties92 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties93 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties94 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties95 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties96 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties97 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties98 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties99 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties100 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties101 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties102 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties103 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties104 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties105 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties106 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties107 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties108 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties109 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties110 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties111 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties112 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties113 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties114 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties115 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties116 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties117 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties118 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties119 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties120 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.Pallete_form = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.lb_error_mac_id = new Bunifu.UI.WinForms.BunifuLabel();
             this.btn_set = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -76,9 +80,12 @@ namespace EBYTE_NAS
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer_get_info = new System.Windows.Forms.Timer(this.components);
             this.cb_module = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.cb_puertos = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.timer_set = new System.Windows.Forms.Timer(this.components);
+            this.timer2_get = new System.Windows.Forms.Timer(this.components);
+            this.timer_module = new System.Windows.Forms.Timer(this.components);
             this.pic_send_mac = new System.Windows.Forms.PictureBox();
             this.btn_conectar = new System.Windows.Forms.PictureBox();
             this.bunifuPanel3 = new Bunifu.UI.WinForms.BunifuPanel();
@@ -87,6 +94,8 @@ namespace EBYTE_NAS
             this.terminalLb = new Bunifu.UI.WinForms.BunifuTextBox();
             this.btn_scroll = new System.Windows.Forms.PictureBox();
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.lb_module_type = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pic_net = new System.Windows.Forms.PictureBox();
             this.pic_channel = new System.Windows.Forms.PictureBox();
@@ -100,6 +109,7 @@ namespace EBYTE_NAS
             this.tx_channel = new Bunifu.UI.WinForms.BunifuTextBox();
             this.tx_addres = new Bunifu.UI.WinForms.BunifuTextBox();
             this.panel_Conf = new Bunifu.UI.WinForms.BunifuPanel();
+            this.CB_PARITY = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.CB_baudRate = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.pic_Prsi = new System.Windows.Forms.PictureBox();
             this.pic_Crsi = new System.Windows.Forms.PictureBox();
@@ -135,12 +145,16 @@ namespace EBYTE_NAS
             this.cb_air_rate = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.lb_Air = new Bunifu.UI.WinForms.BunifuLabel();
             this.lb_Parity = new Bunifu.UI.WinForms.BunifuLabel();
-            this.CB_PARITY = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.lb_BaudRate = new Bunifu.UI.WinForms.BunifuLabel();
             this.tx_NI = new Bunifu.UI.WinForms.BunifuTextBox();
             this.TB_MAC_ID = new Bunifu.UI.WinForms.BunifuTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.timer_set = new System.Windows.Forms.Timer(this.components);
+            this.timer_detect_port = new System.Windows.Forms.Timer(this.components);
+            this.btn_clear_table = new System.Windows.Forms.PictureBox();
+            this.btn_Show_table = new System.Windows.Forms.PictureBox();
+            this.timer_catchTable = new System.Windows.Forms.Timer(this.components);
+            this.timer_eliminar_Ltable = new System.Windows.Forms.Timer(this.components);
+            this.timer_checkVersion = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.cb_module)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cb_puertos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_send_mac)).BeginInit();
@@ -153,6 +167,7 @@ namespace EBYTE_NAS
             ((System.ComponentModel.ISupportInitialize)(this.pic_channel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel_Conf.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CB_PARITY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CB_baudRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Prsi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Crsi)).BeginInit();
@@ -176,8 +191,9 @@ namespace EBYTE_NAS
             ((System.ComponentModel.ISupportInitialize)(this.cb_Wrole)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cb_Psize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cb_air_rate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CB_PARITY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_clear_table)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Show_table)).BeginInit();
             this.SuspendLayout();
             // 
             // Pallete_form
@@ -226,7 +242,7 @@ namespace EBYTE_NAS
             this.lb_error_mac_id.CursorType = null;
             this.lb_error_mac_id.Font = new System.Drawing.Font("Poppins Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_error_mac_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            this.lb_error_mac_id.Location = new System.Drawing.Point(112, 209);
+            this.lb_error_mac_id.Location = new System.Drawing.Point(112, 188);
             this.lb_error_mac_id.Name = "lb_error_mac_id";
             this.lb_error_mac_id.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lb_error_mac_id.Size = new System.Drawing.Size(0, 0);
@@ -238,7 +254,7 @@ namespace EBYTE_NAS
             // 
             this.btn_set.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_set.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Custom1;
-            this.btn_set.Location = new System.Drawing.Point(236, 700);
+            this.btn_set.Location = new System.Drawing.Point(236, 732);
             this.btn_set.Margin = new System.Windows.Forms.Padding(4);
             this.btn_set.Name = "btn_set";
             this.btn_set.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
@@ -291,7 +307,7 @@ namespace EBYTE_NAS
             // 
             this.btn_get.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_get.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Custom1;
-            this.btn_get.Location = new System.Drawing.Point(24, 700);
+            this.btn_get.Location = new System.Drawing.Point(24, 732);
             this.btn_get.Margin = new System.Windows.Forms.Padding(4);
             this.btn_get.Name = "btn_get";
             this.btn_get.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
@@ -347,7 +363,7 @@ namespace EBYTE_NAS
             this.bunifuLabel5.CursorType = null;
             this.bunifuLabel5.Font = new System.Drawing.Font("Poppins Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            this.bunifuLabel5.Location = new System.Drawing.Point(32, 301);
+            this.bunifuLabel5.Location = new System.Drawing.Point(32, 279);
             this.bunifuLabel5.Name = "bunifuLabel5";
             this.bunifuLabel5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel5.Size = new System.Drawing.Size(152, 23);
@@ -363,7 +379,7 @@ namespace EBYTE_NAS
             this.lb_mac_id.CursorType = null;
             this.lb_mac_id.Font = new System.Drawing.Font("Poppins Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_mac_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            this.lb_mac_id.Location = new System.Drawing.Point(32, 209);
+            this.lb_mac_id.Location = new System.Drawing.Point(32, 199);
             this.lb_mac_id.Name = "lb_mac_id";
             this.lb_mac_id.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lb_mac_id.Size = new System.Drawing.Size(52, 23);
@@ -379,7 +395,7 @@ namespace EBYTE_NAS
             this.bunifuLabel3.CursorType = null;
             this.bunifuLabel3.Font = new System.Drawing.Font("Poppins Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuLabel3.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel3.Location = new System.Drawing.Point(236, 128);
+            this.bunifuLabel3.Location = new System.Drawing.Point(236, 120);
             this.bunifuLabel3.Name = "bunifuLabel3";
             this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel3.Size = new System.Drawing.Size(58, 23);
@@ -395,7 +411,7 @@ namespace EBYTE_NAS
             this.bunifuLabel2.CursorType = null;
             this.bunifuLabel2.Font = new System.Drawing.Font("Poppins Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuLabel2.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel2.Location = new System.Drawing.Point(32, 128);
+            this.bunifuLabel2.Location = new System.Drawing.Point(32, 120);
             this.bunifuLabel2.Name = "bunifuLabel2";
             this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel2.Size = new System.Drawing.Size(34, 23);
@@ -412,7 +428,7 @@ namespace EBYTE_NAS
             this.bunifuLabel1.CursorType = System.Windows.Forms.Cursors.Default;
             this.bunifuLabel1.Font = new System.Drawing.Font("Poppins Medium", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuLabel1.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel1.Location = new System.Drawing.Point(483, 38);
+            this.bunifuLabel1.Location = new System.Drawing.Point(483, 47);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel1.Size = new System.Drawing.Size(395, 60);
@@ -421,10 +437,10 @@ namespace EBYTE_NAS
             this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // timer1
+            // timer_get_info
             // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer_get_info.Interval = 1000;
+            this.timer_get_info.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // cb_module
             // 
@@ -438,8 +454,8 @@ namespace EBYTE_NAS
             this.cb_module.Items.AddRange(new object[] {
             "E22",
             "E220",
-            "E320"});
-            this.cb_module.Location = new System.Drawing.Point(236, 155);
+            "E32"});
+            this.cb_module.Location = new System.Drawing.Point(236, 147);
             this.cb_module.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.cb_module.Name = "cb_module";
             this.cb_module.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
@@ -457,6 +473,7 @@ namespace EBYTE_NAS
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.cb_module.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
             this.cb_module.TabIndex = 201;
+            this.cb_module.SelectedIndexChanged += new System.EventHandler(this.cb_module_SelectedIndexChanged);
             // 
             // cb_puertos
             // 
@@ -467,7 +484,7 @@ namespace EBYTE_NAS
             this.cb_puertos.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cb_puertos.DropDownWidth = 121;
             this.cb_puertos.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cb_puertos.Location = new System.Drawing.Point(19, 155);
+            this.cb_puertos.Location = new System.Drawing.Point(19, 147);
             this.cb_puertos.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.cb_puertos.Name = "cb_puertos";
             this.cb_puertos.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
@@ -487,12 +504,27 @@ namespace EBYTE_NAS
             this.cb_puertos.TabIndex = 214;
             this.cb_puertos.DropDown += new System.EventHandler(this.cb_puertos_DropDown_1);
             // 
+            // timer_set
+            // 
+            this.timer_set.Interval = 1000;
+            this.timer_set.Tick += new System.EventHandler(this.timer_set_Tick);
+            // 
+            // timer2_get
+            // 
+            this.timer2_get.Interval = 1000;
+            this.timer2_get.Tick += new System.EventHandler(this.timer2_get_Tick);
+            // 
+            // timer_module
+            // 
+            this.timer_module.Interval = 1000;
+            this.timer_module.Tick += new System.EventHandler(this.timer_module_Tick);
+            // 
             // pic_send_mac
             // 
             this.pic_send_mac.BackColor = System.Drawing.Color.Transparent;
             this.pic_send_mac.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pic_send_mac.Image = global::EBYTE_NAS.Properties.Resources.Copia_de_Copia_de_Diseño_sin_título__8_;
-            this.pic_send_mac.Location = new System.Drawing.Point(400, 336);
+            this.pic_send_mac.Location = new System.Drawing.Point(358, 199);
             this.pic_send_mac.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pic_send_mac.Name = "pic_send_mac";
             this.pic_send_mac.Size = new System.Drawing.Size(28, 28);
@@ -506,7 +538,7 @@ namespace EBYTE_NAS
             this.btn_conectar.BackColor = System.Drawing.Color.Transparent;
             this.btn_conectar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_conectar.Image = global::EBYTE_NAS.Properties.Resources.port_close;
-            this.btn_conectar.Location = new System.Drawing.Point(183, 155);
+            this.btn_conectar.Location = new System.Drawing.Point(183, 147);
             this.btn_conectar.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btn_conectar.Name = "btn_conectar";
             this.btn_conectar.Size = new System.Drawing.Size(28, 28);
@@ -529,7 +561,7 @@ namespace EBYTE_NAS
             this.bunifuPanel3.Controls.Add(this.maclb);
             this.bunifuPanel3.Controls.Add(this.lb_frame_1);
             this.bunifuPanel3.Controls.Add(this.terminalLb);
-            this.bunifuPanel3.Location = new System.Drawing.Point(497, 92);
+            this.bunifuPanel3.Location = new System.Drawing.Point(497, 113);
             this.bunifuPanel3.Name = "bunifuPanel3";
             this.bunifuPanel3.ShowBorders = true;
             this.bunifuPanel3.Size = new System.Drawing.Size(332, 183);
@@ -574,26 +606,26 @@ namespace EBYTE_NAS
             this.maclb.Modified = false;
             this.maclb.Multiline = false;
             this.maclb.Name = "maclb";
-            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties1.FillColor = System.Drawing.Color.Empty;
-            stateProperties1.ForeColor = System.Drawing.Color.Empty;
-            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.maclb.OnActiveState = stateProperties1;
-            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.maclb.OnDisabledState = stateProperties2;
-            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties3.FillColor = System.Drawing.Color.Empty;
-            stateProperties3.ForeColor = System.Drawing.Color.Empty;
-            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.maclb.OnHoverState = stateProperties3;
-            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            stateProperties4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            stateProperties4.ForeColor = System.Drawing.Color.White;
-            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.maclb.OnIdleState = stateProperties4;
+            stateProperties81.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties81.FillColor = System.Drawing.Color.Empty;
+            stateProperties81.ForeColor = System.Drawing.Color.Empty;
+            stateProperties81.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.maclb.OnActiveState = stateProperties81;
+            stateProperties82.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties82.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties82.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties82.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.maclb.OnDisabledState = stateProperties82;
+            stateProperties83.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties83.FillColor = System.Drawing.Color.Empty;
+            stateProperties83.ForeColor = System.Drawing.Color.Empty;
+            stateProperties83.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.maclb.OnHoverState = stateProperties83;
+            stateProperties84.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            stateProperties84.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            stateProperties84.ForeColor = System.Drawing.Color.White;
+            stateProperties84.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.maclb.OnIdleState = stateProperties84;
             this.maclb.Padding = new System.Windows.Forms.Padding(3);
             this.maclb.PasswordChar = '\0';
             this.maclb.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -604,7 +636,7 @@ namespace EBYTE_NAS
             this.maclb.SelectionLength = 0;
             this.maclb.SelectionStart = 0;
             this.maclb.ShortcutsEnabled = true;
-            this.maclb.Size = new System.Drawing.Size(300, 41);
+            this.maclb.Size = new System.Drawing.Size(315, 41);
             this.maclb.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.maclb.TabIndex = 201;
             this.maclb.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -655,26 +687,26 @@ namespace EBYTE_NAS
             this.lb_frame_1.Modified = false;
             this.lb_frame_1.Multiline = false;
             this.lb_frame_1.Name = "lb_frame_1";
-            stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties5.FillColor = System.Drawing.Color.Empty;
-            stateProperties5.ForeColor = System.Drawing.Color.Empty;
-            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.lb_frame_1.OnActiveState = stateProperties5;
-            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.lb_frame_1.OnDisabledState = stateProperties6;
-            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties7.FillColor = System.Drawing.Color.Empty;
-            stateProperties7.ForeColor = System.Drawing.Color.Empty;
-            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.lb_frame_1.OnHoverState = stateProperties7;
-            stateProperties8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            stateProperties8.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            stateProperties8.ForeColor = System.Drawing.Color.White;
-            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.lb_frame_1.OnIdleState = stateProperties8;
+            stateProperties85.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties85.FillColor = System.Drawing.Color.Empty;
+            stateProperties85.ForeColor = System.Drawing.Color.Empty;
+            stateProperties85.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.lb_frame_1.OnActiveState = stateProperties85;
+            stateProperties86.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties86.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties86.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties86.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.lb_frame_1.OnDisabledState = stateProperties86;
+            stateProperties87.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties87.FillColor = System.Drawing.Color.Empty;
+            stateProperties87.ForeColor = System.Drawing.Color.Empty;
+            stateProperties87.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.lb_frame_1.OnHoverState = stateProperties87;
+            stateProperties88.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            stateProperties88.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            stateProperties88.ForeColor = System.Drawing.Color.White;
+            stateProperties88.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.lb_frame_1.OnIdleState = stateProperties88;
             this.lb_frame_1.Padding = new System.Windows.Forms.Padding(3);
             this.lb_frame_1.PasswordChar = '\0';
             this.lb_frame_1.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -685,7 +717,7 @@ namespace EBYTE_NAS
             this.lb_frame_1.SelectionLength = 0;
             this.lb_frame_1.SelectionStart = 0;
             this.lb_frame_1.ShortcutsEnabled = true;
-            this.lb_frame_1.Size = new System.Drawing.Size(300, 41);
+            this.lb_frame_1.Size = new System.Drawing.Size(315, 41);
             this.lb_frame_1.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.lb_frame_1.TabIndex = 200;
             this.lb_frame_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -735,26 +767,26 @@ namespace EBYTE_NAS
             this.terminalLb.Modified = false;
             this.terminalLb.Multiline = false;
             this.terminalLb.Name = "terminalLb";
-            stateProperties9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties9.FillColor = System.Drawing.Color.Empty;
-            stateProperties9.ForeColor = System.Drawing.Color.Empty;
-            stateProperties9.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.terminalLb.OnActiveState = stateProperties9;
-            stateProperties10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties10.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties10.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.terminalLb.OnDisabledState = stateProperties10;
-            stateProperties11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties11.FillColor = System.Drawing.Color.Empty;
-            stateProperties11.ForeColor = System.Drawing.Color.Empty;
-            stateProperties11.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.terminalLb.OnHoverState = stateProperties11;
-            stateProperties12.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            stateProperties12.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            stateProperties12.ForeColor = System.Drawing.Color.White;
-            stateProperties12.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.terminalLb.OnIdleState = stateProperties12;
+            stateProperties89.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties89.FillColor = System.Drawing.Color.Empty;
+            stateProperties89.ForeColor = System.Drawing.Color.Empty;
+            stateProperties89.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.terminalLb.OnActiveState = stateProperties89;
+            stateProperties90.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties90.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties90.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties90.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.terminalLb.OnDisabledState = stateProperties90;
+            stateProperties91.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties91.FillColor = System.Drawing.Color.Empty;
+            stateProperties91.ForeColor = System.Drawing.Color.Empty;
+            stateProperties91.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.terminalLb.OnHoverState = stateProperties91;
+            stateProperties92.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            stateProperties92.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            stateProperties92.ForeColor = System.Drawing.Color.White;
+            stateProperties92.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.terminalLb.OnIdleState = stateProperties92;
             this.terminalLb.Padding = new System.Windows.Forms.Padding(3);
             this.terminalLb.PasswordChar = '\0';
             this.terminalLb.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -765,7 +797,7 @@ namespace EBYTE_NAS
             this.terminalLb.SelectionLength = 0;
             this.terminalLb.SelectionStart = 0;
             this.terminalLb.ShortcutsEnabled = true;
-            this.terminalLb.Size = new System.Drawing.Size(300, 41);
+            this.terminalLb.Size = new System.Drawing.Size(315, 41);
             this.terminalLb.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.terminalLb.TabIndex = 199;
             this.terminalLb.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -782,7 +814,7 @@ namespace EBYTE_NAS
             this.btn_scroll.BackColor = System.Drawing.Color.Transparent;
             this.btn_scroll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_scroll.Image = global::EBYTE_NAS.Properties.Resources.Copia_de_Copia_de_Diseño_sin_título__5_;
-            this.btn_scroll.Location = new System.Drawing.Point(793, 290);
+            this.btn_scroll.Location = new System.Drawing.Point(850, 308);
             this.btn_scroll.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btn_scroll.Name = "btn_scroll";
             this.btn_scroll.Size = new System.Drawing.Size(28, 28);
@@ -799,6 +831,8 @@ namespace EBYTE_NAS
             this.bunifuPanel2.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuPanel2.BorderRadius = 30;
             this.bunifuPanel2.BorderThickness = 1;
+            this.bunifuPanel2.Controls.Add(this.lb_module_type);
+            this.bunifuPanel2.Controls.Add(this.bunifuLabel4);
             this.bunifuPanel2.Controls.Add(this.pictureBox6);
             this.bunifuPanel2.Controls.Add(this.pic_net);
             this.bunifuPanel2.Controls.Add(this.pic_channel);
@@ -811,17 +845,111 @@ namespace EBYTE_NAS
             this.bunifuPanel2.Controls.Add(this.tx_net_id);
             this.bunifuPanel2.Controls.Add(this.tx_channel);
             this.bunifuPanel2.Controls.Add(this.tx_addres);
-            this.bunifuPanel2.Location = new System.Drawing.Point(56, 391);
+            this.bunifuPanel2.Location = new System.Drawing.Point(65, 375);
             this.bunifuPanel2.Name = "bunifuPanel2";
             this.bunifuPanel2.ShowBorders = true;
-            this.bunifuPanel2.Size = new System.Drawing.Size(300, 278);
+            this.bunifuPanel2.Size = new System.Drawing.Size(300, 343);
             this.bunifuPanel2.TabIndex = 207;
+            // 
+            // lb_module_type
+            // 
+            this.lb_module_type.AcceptsReturn = false;
+            this.lb_module_type.AcceptsTab = false;
+            this.lb_module_type.AnimationSpeed = 200;
+            this.lb_module_type.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.lb_module_type.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.lb_module_type.AutoSizeHeight = true;
+            this.lb_module_type.BackColor = System.Drawing.Color.Transparent;
+            this.lb_module_type.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lb_module_type.BackgroundImage")));
+            this.lb_module_type.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            this.lb_module_type.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.lb_module_type.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            this.lb_module_type.BorderColorIdle = System.Drawing.Color.Silver;
+            this.lb_module_type.BorderRadius = 12;
+            this.lb_module_type.BorderThickness = 1;
+            this.lb_module_type.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
+            this.lb_module_type.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.lb_module_type.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.lb_module_type.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.lb_module_type.DefaultText = "";
+            this.lb_module_type.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.lb_module_type.ForeColor = System.Drawing.Color.White;
+            this.lb_module_type.HideSelection = true;
+            this.lb_module_type.IconLeft = null;
+            this.lb_module_type.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.lb_module_type.IconPadding = 10;
+            this.lb_module_type.IconRight = null;
+            this.lb_module_type.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.lb_module_type.Lines = new string[0];
+            this.lb_module_type.Location = new System.Drawing.Point(15, 30);
+            this.lb_module_type.MaxLength = 200;
+            this.lb_module_type.MinimumSize = new System.Drawing.Size(1, 1);
+            this.lb_module_type.Modified = false;
+            this.lb_module_type.Multiline = false;
+            this.lb_module_type.Name = "lb_module_type";
+            stateProperties93.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties93.FillColor = System.Drawing.Color.Empty;
+            stateProperties93.ForeColor = System.Drawing.Color.Empty;
+            stateProperties93.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.lb_module_type.OnActiveState = stateProperties93;
+            stateProperties94.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties94.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties94.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties94.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.lb_module_type.OnDisabledState = stateProperties94;
+            stateProperties95.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties95.FillColor = System.Drawing.Color.Empty;
+            stateProperties95.ForeColor = System.Drawing.Color.Empty;
+            stateProperties95.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.lb_module_type.OnHoverState = stateProperties95;
+            stateProperties96.BorderColor = System.Drawing.Color.Silver;
+            stateProperties96.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            stateProperties96.ForeColor = System.Drawing.Color.White;
+            stateProperties96.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.lb_module_type.OnIdleState = stateProperties96;
+            this.lb_module_type.Padding = new System.Windows.Forms.Padding(3);
+            this.lb_module_type.PasswordChar = '\0';
+            this.lb_module_type.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.lb_module_type.PlaceholderText = "INFO MUDULE";
+            this.lb_module_type.ReadOnly = false;
+            this.lb_module_type.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.lb_module_type.SelectedText = "";
+            this.lb_module_type.SelectionLength = 0;
+            this.lb_module_type.SelectionStart = 0;
+            this.lb_module_type.ShortcutsEnabled = true;
+            this.lb_module_type.Size = new System.Drawing.Size(241, 41);
+            this.lb_module_type.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.lb_module_type.TabIndex = 205;
+            this.lb_module_type.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.lb_module_type.TextMarginBottom = 0;
+            this.lb_module_type.TextMarginLeft = 3;
+            this.lb_module_type.TextMarginTop = 0;
+            this.lb_module_type.TextPlaceholder = "INFO MUDULE";
+            this.lb_module_type.UseSystemPasswordChar = false;
+            this.lb_module_type.WordWrap = true;
+            // 
+            // bunifuLabel4
+            // 
+            this.bunifuLabel4.AllowParentOverrides = false;
+            this.bunifuLabel4.AutoEllipsis = false;
+            this.bunifuLabel4.CursorType = null;
+            this.bunifuLabel4.Font = new System.Drawing.Font("Poppins Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            this.bunifuLabel4.Location = new System.Drawing.Point(24, 8);
+            this.bunifuLabel4.Name = "bunifuLabel4";
+            this.bunifuLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel4.Size = new System.Drawing.Size(97, 23);
+            this.bunifuLabel4.TabIndex = 204;
+            this.bunifuLabel4.Text = "MODULE TYPE";
+            this.bunifuLabel4.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel4.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.bunifuLabel4.Click += new System.EventHandler(this.bunifuLabel4_Click);
             // 
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox6.Location = new System.Drawing.Point(18, 203);
+            this.pictureBox6.Location = new System.Drawing.Point(16, 268);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(17, 15);
@@ -833,7 +961,7 @@ namespace EBYTE_NAS
             // 
             this.pic_net.BackColor = System.Drawing.Color.Transparent;
             this.pic_net.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pic_net.Location = new System.Drawing.Point(18, 141);
+            this.pic_net.Location = new System.Drawing.Point(16, 204);
             this.pic_net.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pic_net.Name = "pic_net";
             this.pic_net.Size = new System.Drawing.Size(17, 15);
@@ -845,7 +973,7 @@ namespace EBYTE_NAS
             // 
             this.pic_channel.BackColor = System.Drawing.Color.Transparent;
             this.pic_channel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pic_channel.Location = new System.Drawing.Point(18, 78);
+            this.pic_channel.Location = new System.Drawing.Point(16, 143);
             this.pic_channel.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pic_channel.Name = "pic_channel";
             this.pic_channel.Size = new System.Drawing.Size(17, 15);
@@ -857,7 +985,7 @@ namespace EBYTE_NAS
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Location = new System.Drawing.Point(18, 14);
+            this.pictureBox3.Location = new System.Drawing.Point(16, 79);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(17, 15);
@@ -872,7 +1000,7 @@ namespace EBYTE_NAS
             this.pic_key.CursorType = null;
             this.pic_key.Font = new System.Drawing.Font("Poppins Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pic_key.ForeColor = System.Drawing.Color.White;
-            this.pic_key.Location = new System.Drawing.Point(39, 202);
+            this.pic_key.Location = new System.Drawing.Point(39, 265);
             this.pic_key.Name = "pic_key";
             this.pic_key.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pic_key.Size = new System.Drawing.Size(26, 23);
@@ -888,7 +1016,7 @@ namespace EBYTE_NAS
             this.lb_netID.CursorType = null;
             this.lb_netID.Font = new System.Drawing.Font("Poppins Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_netID.ForeColor = System.Drawing.Color.White;
-            this.lb_netID.Location = new System.Drawing.Point(39, 141);
+            this.lb_netID.Location = new System.Drawing.Point(39, 204);
             this.lb_netID.Name = "lb_netID";
             this.lb_netID.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lb_netID.Size = new System.Drawing.Size(45, 23);
@@ -904,7 +1032,7 @@ namespace EBYTE_NAS
             this.lb_channel.CursorType = null;
             this.lb_channel.Font = new System.Drawing.Font("Poppins Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_channel.ForeColor = System.Drawing.Color.White;
-            this.lb_channel.Location = new System.Drawing.Point(39, 78);
+            this.lb_channel.Location = new System.Drawing.Point(39, 141);
             this.lb_channel.Name = "lb_channel";
             this.lb_channel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lb_channel.Size = new System.Drawing.Size(61, 23);
@@ -920,7 +1048,7 @@ namespace EBYTE_NAS
             this.lb_addres.CursorType = null;
             this.lb_addres.Font = new System.Drawing.Font("Poppins Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_addres.ForeColor = System.Drawing.Color.White;
-            this.lb_addres.Location = new System.Drawing.Point(39, 14);
+            this.lb_addres.Location = new System.Drawing.Point(39, 77);
             this.lb_addres.Name = "lb_addres";
             this.lb_addres.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lb_addres.Size = new System.Drawing.Size(53, 23);
@@ -959,32 +1087,32 @@ namespace EBYTE_NAS
             this.tx_key.IconRight = null;
             this.tx_key.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.tx_key.Lines = new string[0];
-            this.tx_key.Location = new System.Drawing.Point(15, 222);
+            this.tx_key.Location = new System.Drawing.Point(15, 285);
             this.tx_key.MaxLength = 32767;
             this.tx_key.MinimumSize = new System.Drawing.Size(1, 1);
             this.tx_key.Modified = false;
             this.tx_key.Multiline = false;
             this.tx_key.Name = "tx_key";
-            stateProperties13.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties13.FillColor = System.Drawing.Color.Empty;
-            stateProperties13.ForeColor = System.Drawing.Color.Empty;
-            stateProperties13.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tx_key.OnActiveState = stateProperties13;
-            stateProperties14.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties14.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties14.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.tx_key.OnDisabledState = stateProperties14;
-            stateProperties15.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties15.FillColor = System.Drawing.Color.Empty;
-            stateProperties15.ForeColor = System.Drawing.Color.Empty;
-            stateProperties15.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tx_key.OnHoverState = stateProperties15;
-            stateProperties16.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties16.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            stateProperties16.ForeColor = System.Drawing.Color.White;
-            stateProperties16.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tx_key.OnIdleState = stateProperties16;
+            stateProperties97.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties97.FillColor = System.Drawing.Color.Empty;
+            stateProperties97.ForeColor = System.Drawing.Color.Empty;
+            stateProperties97.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tx_key.OnActiveState = stateProperties97;
+            stateProperties98.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties98.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties98.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties98.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.tx_key.OnDisabledState = stateProperties98;
+            stateProperties99.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties99.FillColor = System.Drawing.Color.Empty;
+            stateProperties99.ForeColor = System.Drawing.Color.Empty;
+            stateProperties99.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tx_key.OnHoverState = stateProperties99;
+            stateProperties100.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties100.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            stateProperties100.ForeColor = System.Drawing.Color.White;
+            stateProperties100.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tx_key.OnIdleState = stateProperties100;
             this.tx_key.Padding = new System.Windows.Forms.Padding(3);
             this.tx_key.PasswordChar = '\0';
             this.tx_key.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1038,32 +1166,32 @@ namespace EBYTE_NAS
             this.tx_net_id.IconRight = null;
             this.tx_net_id.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.tx_net_id.Lines = new string[0];
-            this.tx_net_id.Location = new System.Drawing.Point(15, 160);
+            this.tx_net_id.Location = new System.Drawing.Point(15, 223);
             this.tx_net_id.MaxLength = 32767;
             this.tx_net_id.MinimumSize = new System.Drawing.Size(1, 1);
             this.tx_net_id.Modified = false;
             this.tx_net_id.Multiline = false;
             this.tx_net_id.Name = "tx_net_id";
-            stateProperties17.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties17.FillColor = System.Drawing.Color.Empty;
-            stateProperties17.ForeColor = System.Drawing.Color.Empty;
-            stateProperties17.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tx_net_id.OnActiveState = stateProperties17;
-            stateProperties18.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties18.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties18.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.tx_net_id.OnDisabledState = stateProperties18;
-            stateProperties19.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties19.FillColor = System.Drawing.Color.Empty;
-            stateProperties19.ForeColor = System.Drawing.Color.Empty;
-            stateProperties19.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tx_net_id.OnHoverState = stateProperties19;
-            stateProperties20.BorderColor = System.Drawing.Color.Silver;
-            stateProperties20.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            stateProperties20.ForeColor = System.Drawing.Color.White;
-            stateProperties20.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tx_net_id.OnIdleState = stateProperties20;
+            stateProperties101.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties101.FillColor = System.Drawing.Color.Empty;
+            stateProperties101.ForeColor = System.Drawing.Color.Empty;
+            stateProperties101.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tx_net_id.OnActiveState = stateProperties101;
+            stateProperties102.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties102.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties102.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties102.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.tx_net_id.OnDisabledState = stateProperties102;
+            stateProperties103.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties103.FillColor = System.Drawing.Color.Empty;
+            stateProperties103.ForeColor = System.Drawing.Color.Empty;
+            stateProperties103.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tx_net_id.OnHoverState = stateProperties103;
+            stateProperties104.BorderColor = System.Drawing.Color.Silver;
+            stateProperties104.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            stateProperties104.ForeColor = System.Drawing.Color.White;
+            stateProperties104.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tx_net_id.OnIdleState = stateProperties104;
             this.tx_net_id.Padding = new System.Windows.Forms.Padding(3);
             this.tx_net_id.PasswordChar = '\0';
             this.tx_net_id.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1117,32 +1245,32 @@ namespace EBYTE_NAS
             this.tx_channel.IconRight = null;
             this.tx_channel.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.tx_channel.Lines = new string[0];
-            this.tx_channel.Location = new System.Drawing.Point(15, 97);
+            this.tx_channel.Location = new System.Drawing.Point(15, 160);
             this.tx_channel.MaxLength = 32767;
             this.tx_channel.MinimumSize = new System.Drawing.Size(1, 1);
             this.tx_channel.Modified = false;
             this.tx_channel.Multiline = false;
             this.tx_channel.Name = "tx_channel";
-            stateProperties21.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties21.FillColor = System.Drawing.Color.Empty;
-            stateProperties21.ForeColor = System.Drawing.Color.Empty;
-            stateProperties21.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tx_channel.OnActiveState = stateProperties21;
-            stateProperties22.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties22.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties22.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.tx_channel.OnDisabledState = stateProperties22;
-            stateProperties23.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties23.FillColor = System.Drawing.Color.Empty;
-            stateProperties23.ForeColor = System.Drawing.Color.Empty;
-            stateProperties23.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tx_channel.OnHoverState = stateProperties23;
-            stateProperties24.BorderColor = System.Drawing.Color.Silver;
-            stateProperties24.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            stateProperties24.ForeColor = System.Drawing.Color.White;
-            stateProperties24.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tx_channel.OnIdleState = stateProperties24;
+            stateProperties105.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties105.FillColor = System.Drawing.Color.Empty;
+            stateProperties105.ForeColor = System.Drawing.Color.Empty;
+            stateProperties105.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tx_channel.OnActiveState = stateProperties105;
+            stateProperties106.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties106.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties106.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties106.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.tx_channel.OnDisabledState = stateProperties106;
+            stateProperties107.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties107.FillColor = System.Drawing.Color.Empty;
+            stateProperties107.ForeColor = System.Drawing.Color.Empty;
+            stateProperties107.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tx_channel.OnHoverState = stateProperties107;
+            stateProperties108.BorderColor = System.Drawing.Color.Silver;
+            stateProperties108.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            stateProperties108.ForeColor = System.Drawing.Color.White;
+            stateProperties108.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tx_channel.OnIdleState = stateProperties108;
             this.tx_channel.Padding = new System.Windows.Forms.Padding(3);
             this.tx_channel.PasswordChar = '\0';
             this.tx_channel.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1196,32 +1324,32 @@ namespace EBYTE_NAS
             this.tx_addres.IconRight = null;
             this.tx_addres.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.tx_addres.Lines = new string[0];
-            this.tx_addres.Location = new System.Drawing.Point(16, 35);
+            this.tx_addres.Location = new System.Drawing.Point(16, 98);
             this.tx_addres.MaxLength = 200;
             this.tx_addres.MinimumSize = new System.Drawing.Size(1, 1);
             this.tx_addres.Modified = false;
             this.tx_addres.Multiline = false;
             this.tx_addres.Name = "tx_addres";
-            stateProperties25.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties25.FillColor = System.Drawing.Color.Empty;
-            stateProperties25.ForeColor = System.Drawing.Color.Empty;
-            stateProperties25.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tx_addres.OnActiveState = stateProperties25;
-            stateProperties26.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties26.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties26.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.tx_addres.OnDisabledState = stateProperties26;
-            stateProperties27.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties27.FillColor = System.Drawing.Color.Empty;
-            stateProperties27.ForeColor = System.Drawing.Color.Empty;
-            stateProperties27.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tx_addres.OnHoverState = stateProperties27;
-            stateProperties28.BorderColor = System.Drawing.Color.Silver;
-            stateProperties28.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            stateProperties28.ForeColor = System.Drawing.Color.White;
-            stateProperties28.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tx_addres.OnIdleState = stateProperties28;
+            stateProperties109.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties109.FillColor = System.Drawing.Color.Empty;
+            stateProperties109.ForeColor = System.Drawing.Color.Empty;
+            stateProperties109.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tx_addres.OnActiveState = stateProperties109;
+            stateProperties110.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties110.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties110.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties110.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.tx_addres.OnDisabledState = stateProperties110;
+            stateProperties111.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties111.FillColor = System.Drawing.Color.Empty;
+            stateProperties111.ForeColor = System.Drawing.Color.Empty;
+            stateProperties111.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tx_addres.OnHoverState = stateProperties111;
+            stateProperties112.BorderColor = System.Drawing.Color.Silver;
+            stateProperties112.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            stateProperties112.ForeColor = System.Drawing.Color.White;
+            stateProperties112.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tx_addres.OnIdleState = stateProperties112;
             this.tx_addres.Padding = new System.Windows.Forms.Padding(3);
             this.tx_addres.PasswordChar = '\0';
             this.tx_addres.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1256,6 +1384,7 @@ namespace EBYTE_NAS
             this.panel_Conf.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             this.panel_Conf.BorderRadius = 30;
             this.panel_Conf.BorderThickness = 1;
+            this.panel_Conf.Controls.Add(this.CB_PARITY);
             this.panel_Conf.Controls.Add(this.CB_baudRate);
             this.panel_Conf.Controls.Add(this.pic_Prsi);
             this.panel_Conf.Controls.Add(this.pic_Crsi);
@@ -1291,13 +1420,47 @@ namespace EBYTE_NAS
             this.panel_Conf.Controls.Add(this.cb_air_rate);
             this.panel_Conf.Controls.Add(this.lb_Air);
             this.panel_Conf.Controls.Add(this.lb_Parity);
-            this.panel_Conf.Controls.Add(this.CB_PARITY);
             this.panel_Conf.Controls.Add(this.lb_BaudRate);
-            this.panel_Conf.Location = new System.Drawing.Point(497, 330);
+            this.panel_Conf.Location = new System.Drawing.Point(497, 351);
             this.panel_Conf.Name = "panel_Conf";
             this.panel_Conf.ShowBorders = true;
             this.panel_Conf.Size = new System.Drawing.Size(332, 416);
             this.panel_Conf.TabIndex = 206;
+            // 
+            // CB_PARITY
+            // 
+            this.CB_PARITY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.CB_PARITY.AutoCompleteCustomSource.AddRange(new string[] {
+            "ALTO",
+            "MEDIO",
+            "BAJO"});
+            this.CB_PARITY.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_PARITY.DropDownWidth = 121;
+            this.CB_PARITY.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.CB_PARITY.Items.AddRange(new object[] {
+            "8O1",
+            "8E1",
+            "8N1"});
+            this.CB_PARITY.Location = new System.Drawing.Point(14, 107);
+            this.CB_PARITY.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.CB_PARITY.Name = "CB_PARITY";
+            this.CB_PARITY.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.CB_PARITY.Size = new System.Drawing.Size(270, 31);
+            this.CB_PARITY.StateActive.ComboBox.Border.Color1 = System.Drawing.Color.DimGray;
+            this.CB_PARITY.StateActive.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.CB_PARITY.StateActive.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.CB_PARITY.StateActive.ComboBox.Border.Rounding = 10;
+            this.CB_PARITY.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.CB_PARITY.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.Black;
+            this.CB_PARITY.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.CB_PARITY.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
+            this.CB_PARITY.TabIndex = 212;
+            this.CB_PARITY.SelectedIndexChanged += new System.EventHandler(this.CB_PARITY_SelectedIndexChanged);
             // 
             // CB_baudRate
             // 
@@ -1318,7 +1481,6 @@ namespace EBYTE_NAS
             "2400",
             "4800",
             "9600",
-            "14400",
             "19200",
             "38400",
             "57600",
@@ -2066,55 +2228,6 @@ namespace EBYTE_NAS
             this.lb_Parity.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.lb_Parity.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // CB_PARITY
-            // 
-            this.CB_PARITY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.CB_PARITY.AutoCompleteCustomSource.AddRange(new string[] {
-            "ALTO",
-            "MEDIO",
-            "BAJO"});
-            this.CB_PARITY.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_PARITY.DropDownWidth = 121;
-            this.CB_PARITY.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.CB_PARITY.Items.AddRange(new object[] {
-            "8O1",
-            "8E1",
-            "8N1"});
-            this.CB_PARITY.Location = new System.Drawing.Point(14, 110);
-            this.CB_PARITY.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.CB_PARITY.Name = "CB_PARITY";
-            this.CB_PARITY.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
-            this.CB_PARITY.Size = new System.Drawing.Size(270, 31);
-            this.CB_PARITY.StateActive.ComboBox.Border.Color1 = System.Drawing.Color.DimGray;
-            this.CB_PARITY.StateActive.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.CB_PARITY.StateActive.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.CB_PARITY.StateActive.ComboBox.Border.Rounding = 10;
-            this.CB_PARITY.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.CB_PARITY.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.Black;
-            this.CB_PARITY.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.CB_PARITY.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
-            this.CB_PARITY.StateCommon.Item.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            this.CB_PARITY.StateCommon.Item.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            this.CB_PARITY.StateNormal.ComboBox.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            this.CB_PARITY.StateNormal.Item.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            this.CB_PARITY.StateNormal.Item.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            this.CB_PARITY.StateNormal.Item.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.CB_PARITY.StateTracking.Item.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.CB_PARITY.StateTracking.Item.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.CB_PARITY.StateTracking.Item.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.CB_PARITY.StateTracking.Item.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.CB_PARITY.StateTracking.Item.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.CB_PARITY.TabIndex = 149;
-            // 
             // lb_BaudRate
             // 
             this.lb_BaudRate.AllowParentOverrides = false;
@@ -2160,32 +2273,32 @@ namespace EBYTE_NAS
             this.tx_NI.IconRight = null;
             this.tx_NI.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.tx_NI.Lines = new string[0];
-            this.tx_NI.Location = new System.Drawing.Point(27, 330);
+            this.tx_NI.Location = new System.Drawing.Point(27, 308);
             this.tx_NI.MaxLength = 32767;
             this.tx_NI.MinimumSize = new System.Drawing.Size(1, 1);
             this.tx_NI.Modified = false;
             this.tx_NI.Multiline = false;
             this.tx_NI.Name = "tx_NI";
-            stateProperties29.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties29.FillColor = System.Drawing.Color.Empty;
-            stateProperties29.ForeColor = System.Drawing.Color.Empty;
-            stateProperties29.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tx_NI.OnActiveState = stateProperties29;
-            stateProperties30.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties30.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties30.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.tx_NI.OnDisabledState = stateProperties30;
-            stateProperties31.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties31.FillColor = System.Drawing.Color.Empty;
-            stateProperties31.ForeColor = System.Drawing.Color.Empty;
-            stateProperties31.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tx_NI.OnHoverState = stateProperties31;
-            stateProperties32.BorderColor = System.Drawing.Color.Silver;
-            stateProperties32.FillColor = System.Drawing.Color.White;
-            stateProperties32.ForeColor = System.Drawing.Color.Empty;
-            stateProperties32.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.tx_NI.OnIdleState = stateProperties32;
+            stateProperties113.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties113.FillColor = System.Drawing.Color.Empty;
+            stateProperties113.ForeColor = System.Drawing.Color.Empty;
+            stateProperties113.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tx_NI.OnActiveState = stateProperties113;
+            stateProperties114.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties114.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties114.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties114.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.tx_NI.OnDisabledState = stateProperties114;
+            stateProperties115.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties115.FillColor = System.Drawing.Color.Empty;
+            stateProperties115.ForeColor = System.Drawing.Color.Empty;
+            stateProperties115.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tx_NI.OnHoverState = stateProperties115;
+            stateProperties116.BorderColor = System.Drawing.Color.Silver;
+            stateProperties116.FillColor = System.Drawing.Color.White;
+            stateProperties116.ForeColor = System.Drawing.Color.Empty;
+            stateProperties116.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.tx_NI.OnIdleState = stateProperties116;
             this.tx_NI.Padding = new System.Windows.Forms.Padding(3);
             this.tx_NI.PasswordChar = '\0';
             this.tx_NI.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -2236,32 +2349,32 @@ namespace EBYTE_NAS
             this.TB_MAC_ID.IconRight = null;
             this.TB_MAC_ID.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.TB_MAC_ID.Lines = new string[0];
-            this.TB_MAC_ID.Location = new System.Drawing.Point(27, 238);
-            this.TB_MAC_ID.MaxLength = 32767;
+            this.TB_MAC_ID.Location = new System.Drawing.Point(27, 232);
+            this.TB_MAC_ID.MaxLength = 23;
             this.TB_MAC_ID.MinimumSize = new System.Drawing.Size(1, 1);
             this.TB_MAC_ID.Modified = false;
             this.TB_MAC_ID.Multiline = false;
             this.TB_MAC_ID.Name = "TB_MAC_ID";
-            stateProperties33.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties33.FillColor = System.Drawing.Color.Empty;
-            stateProperties33.ForeColor = System.Drawing.Color.Empty;
-            stateProperties33.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.TB_MAC_ID.OnActiveState = stateProperties33;
-            stateProperties34.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties34.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties34.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.TB_MAC_ID.OnDisabledState = stateProperties34;
-            stateProperties35.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
-            stateProperties35.FillColor = System.Drawing.Color.Empty;
-            stateProperties35.ForeColor = System.Drawing.Color.Empty;
-            stateProperties35.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.TB_MAC_ID.OnHoverState = stateProperties35;
-            stateProperties36.BorderColor = System.Drawing.Color.Silver;
-            stateProperties36.FillColor = System.Drawing.Color.White;
-            stateProperties36.ForeColor = System.Drawing.Color.Empty;
-            stateProperties36.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.TB_MAC_ID.OnIdleState = stateProperties36;
+            stateProperties117.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties117.FillColor = System.Drawing.Color.Empty;
+            stateProperties117.ForeColor = System.Drawing.Color.Empty;
+            stateProperties117.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.TB_MAC_ID.OnActiveState = stateProperties117;
+            stateProperties118.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties118.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties118.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties118.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.TB_MAC_ID.OnDisabledState = stateProperties118;
+            stateProperties119.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(201)))), ((int)(((byte)(90)))));
+            stateProperties119.FillColor = System.Drawing.Color.Empty;
+            stateProperties119.ForeColor = System.Drawing.Color.Empty;
+            stateProperties119.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.TB_MAC_ID.OnHoverState = stateProperties119;
+            stateProperties120.BorderColor = System.Drawing.Color.Silver;
+            stateProperties120.FillColor = System.Drawing.Color.White;
+            stateProperties120.ForeColor = System.Drawing.Color.Empty;
+            stateProperties120.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.TB_MAC_ID.OnIdleState = stateProperties120;
             this.TB_MAC_ID.Padding = new System.Windows.Forms.Padding(3);
             this.TB_MAC_ID.PasswordChar = '\0';
             this.TB_MAC_ID.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -2296,17 +2409,64 @@ namespace EBYTE_NAS
             this.pictureBox1.TabIndex = 197;
             this.pictureBox1.TabStop = false;
             // 
-            // timer_set
+            // timer_detect_port
             // 
-            this.timer_set.Interval = 1000;
-            this.timer_set.Tick += new System.EventHandler(this.timer_set_Tick);
+            this.timer_detect_port.Enabled = true;
+            this.timer_detect_port.Interval = 1000;
+            this.timer_detect_port.Tick += new System.EventHandler(this.timer_detect_port_Tick);
+            // 
+            // btn_clear_table
+            // 
+            this.btn_clear_table.BackColor = System.Drawing.Color.Transparent;
+            this.btn_clear_table.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_clear_table.Image = ((System.Drawing.Image)(resources.GetObject("btn_clear_table.Image")));
+            this.btn_clear_table.Location = new System.Drawing.Point(290, 199);
+            this.btn_clear_table.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btn_clear_table.Name = "btn_clear_table";
+            this.btn_clear_table.Size = new System.Drawing.Size(28, 28);
+            this.btn_clear_table.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btn_clear_table.TabIndex = 218;
+            this.btn_clear_table.TabStop = false;
+            this.btn_clear_table.Click += new System.EventHandler(this.pictureBox5_Click);
+            // 
+            // btn_Show_table
+            // 
+            this.btn_Show_table.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Show_table.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Show_table.Image = ((System.Drawing.Image)(resources.GetObject("btn_Show_table.Image")));
+            this.btn_Show_table.Location = new System.Drawing.Point(324, 199);
+            this.btn_Show_table.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btn_Show_table.Name = "btn_Show_table";
+            this.btn_Show_table.Size = new System.Drawing.Size(28, 28);
+            this.btn_Show_table.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btn_Show_table.TabIndex = 219;
+            this.btn_Show_table.TabStop = false;
+            this.btn_Show_table.Click += new System.EventHandler(this.btn_Show_table_Click);
+            // 
+            // timer_catchTable
+            // 
+            this.timer_catchTable.Enabled = true;
+            this.timer_catchTable.Interval = 500;
+            this.timer_catchTable.Tick += new System.EventHandler(this.timer_catchTable_Tick);
+            // 
+            // timer_eliminar_Ltable
+            // 
+            this.timer_eliminar_Ltable.Enabled = true;
+            this.timer_eliminar_Ltable.Tick += new System.EventHandler(this.timer_eliminar_Ltable_Tick);
+            // 
+            // timer_checkVersion
+            // 
+            this.timer_checkVersion.Interval = 1000;
+            this.timer_checkVersion.Tick += new System.EventHandler(this.timer_checkVersion_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.ClientSize = new System.Drawing.Size(902, 751);
+            this.ClientSize = new System.Drawing.Size(902, 783);
+            this.Controls.Add(this.btn_Show_table);
+            this.Controls.Add(this.btn_clear_table);
             this.Controls.Add(this.pic_send_mac);
             this.Controls.Add(this.cb_puertos);
             this.Controls.Add(this.btn_conectar);
@@ -2338,6 +2498,10 @@ namespace EBYTE_NAS
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.StateCommon.Header.Content.ShortText.Color1 = System.Drawing.Color.Green;
+            this.StateCommon.Header.Content.ShortText.Font = new System.Drawing.Font("Poppins Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Text = "1.0.1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
@@ -2357,6 +2521,7 @@ namespace EBYTE_NAS
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel_Conf.ResumeLayout(false);
             this.panel_Conf.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CB_PARITY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CB_baudRate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Prsi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Crsi)).EndInit();
@@ -2380,8 +2545,9 @@ namespace EBYTE_NAS
             ((System.ComponentModel.ISupportInitialize)(this.cb_Wrole)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cb_Psize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cb_air_rate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CB_PARITY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_clear_table)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Show_table)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2443,7 +2609,6 @@ namespace EBYTE_NAS
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cb_air_rate;
         private Bunifu.UI.WinForms.BunifuLabel lb_Air;
         private Bunifu.UI.WinForms.BunifuLabel lb_Parity;
-        private ComponentFactory.Krypton.Toolkit.KryptonComboBox CB_PARITY;
         private Bunifu.UI.WinForms.BunifuLabel lb_BaudRate;
         private Bunifu.UI.WinForms.BunifuTextBox tx_NI;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel5;
@@ -2453,7 +2618,7 @@ namespace EBYTE_NAS
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer_get_info;
         private System.Windows.Forms.PictureBox btn_conectar;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cb_module;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cb_puertos;
@@ -2463,6 +2628,17 @@ namespace EBYTE_NAS
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox CB_baudRate;
         private System.Windows.Forms.PictureBox pic_send_mac;
         private System.Windows.Forms.Timer timer_set;
+        private System.Windows.Forms.Timer timer2_get;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel4;
+        private Bunifu.UI.WinForms.BunifuTextBox lb_module_type;
+        private System.Windows.Forms.Timer timer_module;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox CB_PARITY;
+        private System.Windows.Forms.Timer timer_detect_port;
+        private System.Windows.Forms.PictureBox btn_clear_table;
+        private System.Windows.Forms.PictureBox btn_Show_table;
+        private System.Windows.Forms.Timer timer_catchTable;
+        private System.Windows.Forms.Timer timer_eliminar_Ltable;
+        private System.Windows.Forms.Timer timer_checkVersion;
     }
 }
 

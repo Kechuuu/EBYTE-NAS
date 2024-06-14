@@ -1,3 +1,7 @@
+## Features
+- Easy-to-use interface for configuring LoRa modules
+- Support for various LoRa settings and parameters
+- Real-time updates and feedback
 
 ![main](https://github.com/Kechuuu/EBYTE-NAS/assets/117384007/9de86482-bc48-4058-a702-e1f61cd3596c)
 

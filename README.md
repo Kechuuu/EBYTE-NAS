@@ -6,6 +6,29 @@ This application is designed to configure LoRa modules with ease. Below are the 
 - Easy-to-use interface for configuring LoRa modules
 - Support for various LoRa settings and parameters
 - Real-time updates and feedback
+## Installation
+
+To install and set up the app, follow these steps:
+
+1. **Clone the Repository:**
+
+
+2. **Navigate to the Project Directory:**
+
+
+3. **Install Dependencies:**
+
+
+4. **Run the Application:**
+
+
+## Usage
+
+Once the application is running, follow these steps to configure your LoRa module:
+
+1. Connect your LoRa module to the computer.
+2. Open the application in your browser.
+3. Follow the on-screen instructions to configure your LoRa module.
 
 ![main](https://github.com/Kechuuu/EBYTE-NAS/assets/117384007/9de86482-bc48-4058-a702-e1f61cd3596c)
 

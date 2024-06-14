@@ -1,1 +1,1 @@
-![Static Badge](https://img.shields.io/badge/EBYTE)
+![Static Badge](https://img.shields.io/badge/Ebyte%2CBlue)

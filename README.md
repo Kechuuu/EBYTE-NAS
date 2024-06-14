@@ -21,6 +21,14 @@ To install and set up the app, follow these steps:
 
 4. **Run the Application:**
 
+## Usage
+
+Once the application is running, follow these steps to configure your LoRa module:
+
+1. Connect your LoRa module to the computer.
+2. Open the application in your browser.
+3. Follow the on-screen instructions to configure your LoRa module.
+
 ## Preview
 
 Here is a preview of the main interface of the application:
@@ -33,13 +41,10 @@ In this section, you can select the port and the version of the LoRa module you 
 
 ![port](https://github.com/Kechuuu/EBYTE-NAS/assets/117384007/684fcc6c-c92d-456a-b687-3a51696c78c1)
 
+### Using the Get and Set Buttons
 
-## Usage
+Use the "Get" button to retrieve data from the LoRa modules, and the "Set" button to send configurations to them:
 
-Once the application is running, follow these steps to configure your LoRa module:
-
-1. Connect your LoRa module to the computer.
-2. Open the application in your browser.
-3. Follow the on-screen instructions to configure your LoRa module.
+![get-set](https://github.com/Kechuuu/EBYTE-NAS/assets/117384007/247a40f1-fb56-4852-90e1-b727018d0cda)
 
 

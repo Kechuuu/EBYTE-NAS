@@ -1,2 +1,2 @@
-[![NAS-Board - Library](https://img.shields.io/badge/EBYTE-Lora-blue)](https://)]
+[![NAS-Board - Library](https://img.shields.io/badge/EBYTE-Lora-blue)](https://)
 ![Screenshot 2024-06-14 112912](https://github.com/Kechuuu/EBYTE-NAS/assets/117384007/42470df9-05a7-4936-b3dc-5dda579206ba)

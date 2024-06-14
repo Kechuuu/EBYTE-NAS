@@ -1,3 +1,7 @@
+# LoRa Module Configuration App
+
+This application is designed to configure LoRa modules with ease. Below are the instructions and details to get started.
+
 ## Features
 - Easy-to-use interface for configuring LoRa modules
 - Support for various LoRa settings and parameters

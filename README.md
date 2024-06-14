@@ -43,7 +43,3 @@ Once the application is running, follow these steps to configure your LoRa modul
 3. Follow the on-screen instructions to configure your LoRa module.
 
 
-
-[![NAS-Board - Library](https://img.shields.io/badge/EBYTE-Lora-blue)](https://)
-![port](https://github.com/Kechuuu/EBYTE-NAS/assets/117384007/684fcc6c-c92d-456a-b687-3a51696c78c1)
-

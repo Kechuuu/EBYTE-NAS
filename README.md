@@ -47,4 +47,7 @@ Use the "Get" button to retrieve data from the LoRa modules, and the "Set" butto
 
 ![get-set](https://github.com/Kechuuu/EBYTE-NAS/assets/117384007/247a40f1-fb56-4852-90e1-b727018d0cda)
 
+## Contact
+
+For questions or support, please open an issue or contact us at development@ochoa.technology
 
